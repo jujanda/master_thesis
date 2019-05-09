@@ -1,0 +1,144 @@
+%=========================================================================================================================================
+%=========================================================================================================================================
+\chapter{Implementierungen}
+%=========================================================================================================================================
+%=========================================================================================================================================
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\section{GET CHALLENGE}
+%-----------------------------------------------------------------------------------------------------------------------------------------
+Der Quellcode \ref{lst:appendix:impl:challenge1} enthält den Code der \inlinejavacode{GetChallengeHandler}-Klasse ohne
+Kommentare. Durch platzsparendes Einrücken konnte ein ungünstiger Seitenumbruch vermieden werden.
+
+\begin{lstlisting}[language=Java, caption=Implementierung des GET CHALLENGE Kommandos,label=lst:appendix:impl:challenge1]
+package at.ac.uniklu.simulator.commands.iso7816;
+
+import java.util.Random;
+
+import at.ac.uniklu.simulator.commands.CommandHandler;
+import at.ac.uniklu.simulator.commands.CommandPattern;
+import at.ac.uniklu.simulator.commands.ISO7816DefaultReturnCodes;
+import at.ac.uniklu.simulator.commands.RAPDU;
+import at.ac.uniklu.simulator.util.Enum1;
+import at.ac.uniklu.simulator.util.HEXByteString;
+
+public class GetChallengeHandler extends CommandHandler
+{
+  public String getIdentifier()
+  {
+    return "GetChallenge";
+  }
+
+  public CommandPattern getCommandPattern()
+  {
+    return new CommandPattern("XX", "84");
+  }
+
+  protected Enum1 returnDataStatus()
+  {
+    return EnumStatus.needed;
+  }
+
+  public Enum1 dataStatus()
+  {
+    return EnumStatus.notallowed;
+  }
+
+  public RAPDU preExecute()
+  {
+    RAPDU ret = super.preExecute();
+    if (ret != null)
+      return ret;
+
+    if (command.getP1().getByte() != 0 || command.getP2().getByte() != 0)
+      return ISO7816DefaultReturnCodes.get(ISO7816DefaultReturnCodes.codes.SW_WRONG_PARAMETERS);
+    return null;
+  }
+
+
+  public RAPDU execute()
+  {
+    Random r = new Random();
+    int randnum = command.getNe();
+
+    byte[] rbytes = new byte[randnum];
+    r.nextBytes(rbytes);
+
+    RAPDU ret = ISO7816DefaultReturnCodes.get(ISO7816DefaultReturnCodes.codes.SW_NO_ERROR);
+    ret.setData(new HEXByteString(rbytes));
+
+    this.getOpSys().getCurrentSession().setChallenge(new HEXByteString(rbytes));
+
+    return ret;
+  }
+}
+\end{lstlisting}
+
+% Der Quellcode \ref{lst:appendix:impl:challenge2} enthält den Code der \inlinejavacode{GetChallengeHandler}-Klasse ohne
+% Kommentare, aber mit platzsparendem Einrücken. Somit konnte ein ungünstiger Seitenumbruch vermieden werden.
+%
+% \begin{lstlisting}[language=Java, caption=Implementierung des GET CHALLENGE Kommandos,label=lst:appendix:impl:challenge2]
+% package at.ac.uniklu.simulator.commands.iso7816;
+%
+% import java.util.Random;
+%
+% import at.ac.uniklu.simulator.commands.CommandHandler;
+% import at.ac.uniklu.simulator.commands.CommandPattern;
+% import at.ac.uniklu.simulator.commands.ISO7816DefaultReturnCodes;
+% import at.ac.uniklu.simulator.commands.RAPDU;
+% import at.ac.uniklu.simulator.util.Enum1;
+% import at.ac.uniklu.simulator.util.HEXByteString;
+%
+% public class GetChallengeHandler extends CommandHandler
+% {
+%   public String getIdentifier() {
+%     return "GetChallenge";
+%   }
+%
+%   public CommandPattern getCommandPattern() {
+%     return new CommandPattern("XX", "84");
+%   }
+%
+%   protected Enum1 returnDataStatus() {
+%     return EnumStatus.needed;
+%   }
+%
+%   public Enum1 dataStatus() {
+%     return EnumStatus.notallowed;
+%   }
+%
+%   public RAPDU preExecute() {
+%     RAPDU ret = super.preExecute();
+%     if (ret != null) return ret;
+%     if (command.getP1().getByte() != 0 || command.getP2().getByte() != 0)
+%       return ISO7816DefaultReturnCodes.get(ISO7816DefaultReturnCodes.codes.SW_WRONG_PARAMETERS);
+%     return null;
+%   }
+%
+%   public RAPDU execute() {
+%     Random r = new Random();
+%     int randnum = command.getNe();
+%
+%     byte[] rbytes = new byte[randnum];
+%     r.nextBytes(rbytes);
+%
+%     RAPDU ret = ISO7816DefaultReturnCodes.get(ISO7816DefaultReturnCodes.codes.SW_NO_ERROR);
+%     ret.setData(new HEXByteString(rbytes));
+%
+%     this.getOpSys().getCurrentSession().setChallenge(new HEXByteString(rbytes));
+%
+%     return ret;
+%   }
+% }
+% \end{lstlisting}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\section{Kein A.1 ohne A.2}
+%-----------------------------------------------------------------------------------------------------------------------------------------
+
+\cleardoublepage
+%=========================================================================================================================================
+%=========================================================================================================================================
+% EOF
+%=========================================================================================================================================
+%=========================================================================================================================================

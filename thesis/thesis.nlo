@@ -1,0 +1,46 @@
+\nomenclatureentry{aAR@[{AR}]\begingroup access rule\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aPIN@[{PIN}]\begingroup personal identification number\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aFCI@[{FCI}]\begingroup file control information\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aFCP@[{FCP}]\begingroup file control parameter\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aFMP@[{FMP}]\begingroup file management parameter\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aAID@[{AID}]\begingroup application identifier\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aRID@[{RID}]\begingroup registered identifier\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aPIX@[{PIX}]\begingroup proprietary application identifier extension\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aURI@[{URI}]\begingroup uniform resource identifier\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{a\LE@[{\LE}]\begingroup length expected field\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{a\NE@[{\NE}]\begingroup number expected\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{a\LC@[{\LC}]\begingroup length command field\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{a\NE@[{\NE}]\begingroup number command\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aSE@[{SE}]\begingroup security environment\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aSEID@[{SEID}]\begingroup security environment ID\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aSW1, SW2@[{SW1, SW2}]\begingroup status word 1, status word 2\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aPUK@[{PUK}]\begingroup PIN unblocking key\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aECDSA@[{ECDSA}]\begingroup elliptic curve DSA\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aDSA@[{DSA}]\begingroup digital signature algorithm\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aIP@[{IP}]\begingroup internet protocol\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aTCP@[{TCP}]\begingroup transmission control protocol\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aCRC@[{CRC}]\begingroup cyclic redundancy check\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aLRC@[{LRC}]\begingroup longitudinal redundancy check\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aPCB@[{PCB}]\begingroup protocol control byte\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aLEN@[{LEN}]\begingroup length\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{amin(x,y)@[{min(x,y)}]\begingroup Minimum von x und y\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aGUI@[{GUI}]\begingroup graphical user interface\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aGPL@[{GPL}]\begingroup GNU general public license\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aGNU@[{GNU}]\begingroup GNU is not Unix\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aXML@[{XML}]\begingroup extensible markup language\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aFSF@[{FSF}]\begingroup Free Software Foundation\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aDOM@[{DOM}]\begingroup document object model\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aJDK@[{JDK}]\begingroup Java development kit\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aIDE@[{IDE}]\begingroup integrated development environment\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aFTP@[{FTP}]\begingroup file transfer protocol\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aJAR@[{JAR}]\begingroup Java archive\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aAPI@[{API}]\begingroup application programming interface\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aGIJ@[{GIJ}]\begingroup GNU Interpreter for Java\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aGCJ@[{GCJ}]\begingroup GNU Compiler for Java\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aWWW@[{WWW}]\begingroup world wide web\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aRMI@[{RMI}]\begingroup remote method invocation\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aIPC@[{IPC}]\begingroup englisch inter-process communication\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aLSB@[{LSB}]\begingroup least significant bit\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aPDA@[{PDA}]\begingroup personal digital assistant\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aGND@[{GND}]\begingroup ground\nomeqref {A.0}|nompageref}{15}
+\nomenclatureentry{aEMV@[{EMV}]\begingroup Europay, MasterCard und Visa\nomeqref {A.0}|nompageref}{15}

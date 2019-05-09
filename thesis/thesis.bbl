@@ -1,0 +1,73 @@
+\begin{thebibliography}{MeVO96}
+
+\bibitem[Ashb00]{Ashb00}
+J.~D.~M. Ashbourn: {Biometrics : Advanced Identify Verification: The Complete
+  Guide}. Springer Verlag (2000).
+
+\bibitem[BeKH01]{BeKH01}
+K.~Beuth, G.~Kurz, R.~Hanebuth: {Nachrichtentechnik}. {Vogel Fachbuch},
+  {Vogel-Verlag KG.}, Würzburg (2001).
+
+\bibitem[BeKP91]{BeKP91}
+A.~Beutelspacher, A.~G. Kersten, A.~Pfau: {Chipkarten als Sicherheitswerkzeug}.
+  Springer Verlag, Berlin (1991).
+
+\bibitem[BiSh91]{diffkrypto}
+E.~Biham, A.~Shamir: Differential Cryptanalysis of DES-like Cryptosystems.
+  \emph{In: CRYPTO '90: Proceedings of the 10th Annual International Cryptology
+  Conference on Advances in Cryptology}, Springer-Verlag, London, UK (1991),
+  2--21.
+
+\bibitem[Breu84]{Breu84}
+R.~Breuer: {Computer-Schutz durch Sicherung und Versicherung}.
+  Karamanolis-Verlag (1984).
+
+\bibitem[Chen00]{Chen00}
+Z.~Chen: {Java Card Technology for Smart Cards: Architecture and Programmer's
+  Guide (The Java Series)}. Addison-Wesley (2000).
+
+\bibitem[DaRi00]{Rijndael}
+J.~Daemen, V.~Rijmen: The Block Cipher Rijndael. \emph{In: CARDIS '98:
+  Proceedings of the The International Conference on Smart Card Research and
+  Applications}, Springer-Verlag, London, UK (2000), 277--284.
+
+\bibitem[ITU97]{ITU:X.690}
+{International Telecommunication Union}: Information technology -- {ASN.1}
+  encoding rules: Specification of Basic Encoding Rules {(BER),}Canonical
+  Encoding Rules {(CER)} and Distinguished Encoding Rules{(DER)} (1997),
+  \urlprefix\url{http://www.itu.int}, iTU-T Rec. X.690 (2002) | ISO/IEC
+  8825-1:2002.
+
+\bibitem[JoMV01]{ECDSA}
+D.~Johnson, A.~Menezes, S.~A. Vanstone: {The Elliptic Curve Digital Signature
+  Algorithm (ECDSA)}. In: \emph{International Journal on Information Security},
+  1, 1 (2001), 36--63.
+
+\bibitem[MeVO96]{HandCrypto}
+A.~J. Menezes, S.~A. Vanstone, P.~C.~V. Oorschot: Handbook of Applied
+  Cryptography. CRC Press, Inc., Boca Raton, FL, USA (1996).
+
+\bibitem[NIST77]{DES}
+NIST: {Data Encryption Standard}, \emph{Federal information processing
+  standards publication}, Bd.~46. {National Institute for Standards and
+  Technology} (1977).
+
+\bibitem[NIST00]{DSA}
+NIST: {FIPS PUB 186-2} {Digital Signature Standard (DSS)}. {National Institute
+  for Standards and Technology}, {Gaithersburg, MD, USA} (2000),
+  \urlprefix\url{http://www.itl.nist.gov/fipspubs/fip186-2.pdf}.
+
+\bibitem[RaEf02]{HandChip}
+W.~Rankl, W.~Effing: Handbuch der Chipkarten. Carl Hanser Verlag München Wien
+  (2002), 4., überarbeitete und aktualisierte Auflage.
+
+\bibitem[Rank06]{ChipAnw}
+W.~Rankl: Chipkartenanwendungen. Carl Hanser Verlag München Wien (2006),
+  entwurfsmuster für Einsatz und Programmierung von Chipkarten.
+
+\bibitem[RiSA78]{RSA}
+R.~L. Rivest, A.~Shamir, L.~M. Adleman: A Method for Obtaining Digital
+  Signatures and Public-Key Cryptosystems. In: \emph{Communications of the
+  ACM}, 21, 2 (1978), 120--126.
+
+\end{thebibliography}

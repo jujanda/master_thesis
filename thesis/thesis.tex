@@ -1,0 +1,636 @@
+%=======================================================================================================================
+%=======================================================================================================================
+%===   Vorlage DA, MA, BA, SE, PS   (c) syssec 2017   ==================================================================
+%===                                                  ==================================================================
+%===   V2.1  290317                                   ==================================================================
+%=======================================================================================================================
+%=======================================================================================================================
+\documentclass[11pt,twoside,openright]{klureport}
+
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! Bei Verwendung der Englischen Sprache Option "english" angeben.
+% !!!!!!!!!!!!!!!!
+%
+%\documentclass[11pt,twoside,openright,english]{klureport}
+%
+\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amsthm,color}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{tocbibind}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage[intoc]{nomencl}
+\usepackage{titlesec}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+
+%
+%                  OPTIMIERT für PDFLaTeX
+%
+% !!!!!!!!!!!!!!!! Muss zur Compilierung LaTeX genutzt werden, da psfrag (oder Ähnliches verwendet wird),
+% !!! ANPASSEN !!! dann darf das package hyperref nicht verwendet werden
+% !!!!!!!!!!!!!!!! --> auskommentieren und \newcommand{\href}[2]{#2} definieren.
+%
+\usepackage[
+    pdftex,
+    a4paper,
+    bookmarks,
+    bookmarksopen=true,
+    bookmarksnumbered=true,
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! Autorin bzw. Autor der PDF-Datei
+% !!!!!!!!!!!!!!!!
+    pdfauthor={Peter Schartner},
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! Titel der PDF-Datei
+% !!!!!!!!!!!!!!!!
+    pdftitle={syssec Formatvorlage + Tipps für wissenschaftliche Arbeiten},
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! Stichwörter
+% !!!!!!!!!!!!!!!!
+    pdfkeywords={syssec Formatvorlage Tipps Richtlinien syssec Seminararbeit Masterarbeit DiplomandInnen},
+%
+%   colorlinks,
+    linkcolor=blue,
+    urlcolor=blue,
+    plainpages=false
+]{hyperref}
+
+% !!!!!!!!!!!!!!!! Muss zur Compilierung LaTeX genutzt werden, da psfrag (oder Ähnliches verwendet wird),
+% !!! ANPASSEN !!! dann darf das package hyperref nicht verwendet werden
+% !!!!!!!!!!!!!!!! --> \newcommand{\href}[2]{#2} definieren.
+%
+%\newcommand{\href}[2]{#2}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Silbentrennung
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Bsp.: Bei-spiel --> Trennung Bei- spiel
+%       dazu      --> keine Trennung
+%
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!!
+% !!!!!!!!!!!!!!!!
+\hyphenation{Bei-spiel dazu}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Diverses Variablen
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! Umschaltung von DRAFT-Version auf FINAL-Version
+% !!!!!!!!!!!!!!!! Vor dem Ausdruck für die gebundene Arbeit FINAL auf true setzen!
+%
+%                  Bis dahin nicht ersetzte Platzhalter (für Vorname, Nachname, Version, Datum, ...) führen dann zu einer Fehlermeldung!
+%
+\newboolean{FINAL}
+\setboolean{FINAL}{false}
+
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! Sprache der Arbeit
+% !!!!!!!!!!!!!!!!
+% ENG = true  --> Englische Bezeichner und Abkürzungen --> Optionen bei \documentclass ÄNDERN!
+%             --> \documentclass[11pt,twoside,openright,english]{klureport}
+% ENG = false --> Deutsche  Bezeichner und Abkürzungen --> Optionen bei \documentclass ÄNDERN!
+%             --> \documentclass[11pt,twoside,openright]{klureport}
+%
+\newboolean{ENG}
+\setboolean{ENG}{false}
+
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! Geschlecht der Autorin bzw. des Autors
+% !!!!!!!!!!!!!!!!
+% FEMALE = true  --> Weibliche Bezeichner auf Titelseite
+% FEMALE = false --> Männliche Bezeichner auf Titelseite
+%
+\newboolean{FEMALE}
+\setboolean{FEMALE}{true}
+
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! Typ der wissenschaftlichen Arbeit
+% !!!!!!!!!!!!!!!!
+\def\TYPE{MA}
+%
+%  PS Proseminararbeit:    "Masterarbeit" --> "Proseminararbeit",
+%                          "zur Erlangung des akademischen Grades Diplom-Ingenieur" --> entfällt
+%  SE Seminararbeit:       "Masterarbeit" --> "Seminararbeit",
+%                          "zur Erlangung des akademischen Grades Diplom-Ingenieur" --> entfällt
+%  BA Bakkalaureatsarbeit: "Masterarbeit" --> "Bakkalaureatsarbeit",
+%                          "zur Erlangung des akademischen Grades ..."
+%  MA Masterarbeit:        "Masterarbeit" --> bleibt,
+%                          "zur Erlangung des akademischen Grades Diplom-Ingenieur" --> bleibt
+
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! Individuelle Daten der Titelseite
+% !!!!!!!!!!!!!!!!
+ \studname{Angewandte Informatik}
+ \title{syssec Formatvorlage \\
+        Tipps für wissenschaftliche Arbeiten}
+ \author{\ph{Vorname} \ph{Nachname}}
+ \advisor{Assoc.Prof.~Dr.~Peter~Schartner}
+ \version{\ph{0.01 -- 0.99}}
+ \date{\ph{DATUM DER ABGABE}}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Automatisches Generieren der Daten für die Titelseite und andere Anpassungen
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\newboolean{ZITAT}           % nicht ändern, flags werden automatisch gesetzt
+\setboolean{ZITAT}{false}    %
+\newboolean{DANK}            %
+\setboolean{DANK}{false}     %
+
+\ifthenelse{\boolean{ENG}}{
+  \ifthenelse{\equal{\TYPE}{PS}}{
+    \reporttype{Proseminararbeit}%{Proseminar Paper}
+  }{
+    \ifthenelse{\equal{\TYPE}{SE}}{
+      \reporttype{Seminararbeit}%{Seminar Paper}
+    }{
+      \ifthenelse{\equal{\TYPE}{BA}}{
+        \reporttype{Bachelorarbeit}%{Bachelor Thesis}
+        \grade{Bachelor of Science}
+        % \grade{Bakk. techn.} alter Studienplan
+        \setboolean{DANK}{true}
+      }{
+        \ifthenelse{\equal{\TYPE}{MA}}{
+          \reporttype{Masterarbeit}%{Master Thesis}
+          \setboolean{ZITAT}{true}
+          \setboolean{DANK}{true}
+          \ifthenelse{\boolean{FEMALE}}{
+            \grade{Diplom-Ingenieurin}
+          }{
+            \grade{Diplom-Ingenieur}
+          }
+        }{
+          \reporttype{\ph{Type of work undefined!}}
+        }
+      }
+    }
+  }
+}{
+  \ifthenelse{\equal{\TYPE}{PS}}{
+    \reporttype{Proseminararbeit}
+  }{
+    \ifthenelse{\equal{\TYPE}{SE}}{
+      \reporttype{Seminararbeit}
+    }{
+      \ifthenelse{\equal{\TYPE}{BA}}{
+        \reporttype{Bakkalaureatsarbeit}
+        \grade{Bachelor of Science}
+        % \grade{Bakk. techn.} alter Studienplan
+        \setboolean{DANK}{true}
+      }{
+        \ifthenelse{\equal{\TYPE}{MA}}{
+          \reporttype{Masterarbeit}
+          \setboolean{ZITAT}{true}
+          \setboolean{DANK}{true}
+          \ifthenelse{\boolean{FEMALE}}{
+            \grade{Diplom-Ingenieurin}
+          }{
+            \grade{Diplom-Ingenieur}
+          }
+        }{
+          \reporttype{\ph{Typ der Arbeit undefiniert!}}
+        }
+      }
+    }
+  }
+}
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Platzhalter
+%-----------------------------------------------------------------------------------------------------------------------------------------
+  \ifthenelse{\boolean{FINAL}}{
+    \newcommand{\ph}[1]{\end{document}}
+  }{
+    \newcommand{\ph}[1]{{\color[rgb]{1,0,0}\textbf{\uppercase{$<$#1$>$}}}}
+  }
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Generelle Daten für die Titelseite
+%-----------------------------------------------------------------------------------------------------------------------------------------
+ %
+ % Altes Logo der Uni
+ %
+ %\university{\begin{center}\includegraphics[width=0.5\textwidth]{Logos/UniLogo}\end{center}}
+
+ %
+ % Logo der TeWi (rechtsbündig) ohne \hfill linksbündig mit \begin{center}...\end{center} zentriert
+ %
+% \university{\vspace*{-20mm}\hfill\includegraphics[width=0.35\textwidth]{Logos/TeWiLogo}\vspace*{10mm}}
+%
+% KEIN LOGO MEHR!!!
+%
+% \university{\vspace*{-20mm}\hfill\includegraphics[width=0.35\textwidth]{Logos/TeWiLogoBlue}\vspace*{10mm}}
+
+\university{\vspace*{48pt}}
+
+%
+% \university{\vspace*{-20mm}\hfill\includegraphics[width=0.35\textwidth]{Logos/TeWiLogoGreen}\vspace*{10mm}}
+
+ \universityname{Alpen-Adria-Universität Klagenfurt}
+ \city{Klagenfurt}
+ \fakultaetname{Fakultät für Technische Wissenschaften}
+ \institute{Institut für Angewandte Informatik}
+ \researchgroup{Forschungsgruppe Systemsicherheit}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Kontaktadresse
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! eMail-Adresse der Autorin bzw. des Autors anpassen
+% !!!!!!!!!!!!!!!!
+\ifthenelse{\boolean{ENG}}{
+    \lowertitleback{
+      In case of comments or problems, please contact the System Security Research Group
+      (\href{mailto:info@syssec.at}{info@syssec.at}) or the author (\href{mailto:peter@syssec.at}{\ph{email}}).
+    }
+}{
+  \ifthenelse{\boolean{FEMALE}}{
+    \lowertitleback{
+      Bei Fragen, Problemen oder Anregungen kontaktieren Sie bitte die Forschungsgruppe Systemsicherheit
+      (\href{mailto:info@syssec.at}{info@syssec.at}) oder die Autorin (\href{mailto:peter@syssec.at}{\ph{email}}).
+    }
+  }{
+    \lowertitleback{
+      Bei Fragen, Problemen oder Anregungen kontaktieren Sie bitte die Forschungsgruppe Systemsicherheit
+      (\href{mailto:info@syssec.at}{info@syssec.at}) oder den Autor (\href{mailto:peter@syssec.at}{\ph{email}}).
+    }
+  }
+}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Definitionen für diverse Verzeichnisse (Abkürzungsverzeichnis ,Inhaltsverzeichnis, ...)
+%-----------------------------------------------------------------------------------------------------------------------------------------
+ \ifthenelse{\boolean{ENG}}{
+   \renewcommand{\abstractname}{Abstract}
+   \renewcommand{\contentsname}{Table of Contents}
+   \renewcommand{\nomname}{Table of Abbreviations}
+   \renewcommand{\lstlistlistingname}{Table of Listings}
+   \renewcommand{\lstlistingname}{Src.}
+
+ }{
+   \renewcommand{\abstractname}{Kurzfassung}
+   \renewcommand{\contentsname}{Inhaltsverzeichnis}
+   \renewcommand{\nomname}{Abkürzungsverzeichnis}
+   \renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
+   \renewcommand{\lstlistingname}{Src.}
+ }
+
+ \setlength{\nomlabelwidth}{.25\hsize}
+ \renewcommand{\nomlabel}[1]{#1 \hfill}
+ \setlength{\nomitemsep}{-\parsep}
+ \makenomenclature
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Definitionen für Überschriften
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\titlespacing{\section}{0pc}{*3}{*0}[0pc]
+\titlespacing{\subsection}{0pc}{*2}{-3pt}[0pc]
+\titlespacing{\subsubsection}{0pc}{*1}{-6pt}[0pc]
+\titlespacing{\paragraph}{0pc}{*3}{0.5em}
+
+\titleformat{\chapter}{\normalfont\sffamily\LARGE\bfseries}{\thechapter}{0.5em}{}
+\titleformat{\section}{\normalfont\sffamily\Large\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalfont\sffamily\large\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalfont\sffamily\bfseries}{\thesubsubsection}{0.5em}{}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Diverse hilfreiche Kommandos und Definitionen
+%-----------------------------------------------------------------------------------------------------------------------------------------
+ \newcommand{\topcaption}[1]{\caption{#1}\vspace*{3pt}}    % mehr Abstand zwischen Überschrift und Tabelle
+ \newcommand{\figcaption}[1]{\vspace*{-6pt}\caption{#1}}   % weniger Abstand zwischen Überschrift und Abbildung
+
+ \clubpenalty = 10000
+ \widowpenalty = 10000
+ \displaywidowpenalty = 10000
+
+ \renewcommand{\textfraction}{0.05}                        % ermöglicht Text auf Seiten mit großen Abbildungen (oder Tabellen, ...)
+
+ \setcounter{tocdepth}{2}                                  % Table Of Contents including Chapters, Sections and Subsections
+ \setcounter{secnumdepth}{2}                               % Counter up to Level 3: Chapter, Section, and Subsection
+
+ \raggedbottom                                             % Flattersatz am Seitenende --> konstante Abstände zwischen Absätzen
+
+ \linespread{1.1}                                          % etwas mehr als einfacher Zeilenabstand
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Definitionen für die Listing-Umgebung
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\definecolor{hellgelb}{rgb}{1,1,0.8}
+\definecolor{colKeys}{rgb}{0,0,1}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{1,0,0}
+\definecolor{colString}{rgb}{0,0.5,0}
+
+\lstset {
+  float=hbp,%
+  basicstyle=\ttfamily\scriptsize,
+  %
+  % !!!!!!!!!!!!!!!!
+  % !!! ANPASSEN !!! Für SW-Druck ggfs. auskommentieren!
+  % !!!!!!!!!!!!!!!!
+  identifierstyle=\color{colIdentifier},
+  keywordstyle=\color{colKeys},
+  stringstyle=\color{colString},
+  commentstyle=\color{colComments},
+  backgroundcolor=\color{hellgelb},
+  %
+  columns=flexible,
+  tabsize=2,
+  frame=single,
+  extendedchars=true,
+  showspaces=false,
+  showstringspaces=false,
+  numbers=none,
+  numberstyle=\tiny,
+  breaklines=true,
+  breakautoindent=true,
+  captionpos=b,
+  language = Java,
+  frameround=tttt,
+  xleftmargin=1.5mm,
+  xrightmargin=1.5mm,
+  % linewidth=\textwidth
+}
+
+\lstloadlanguages{Java,XML}
+
+\renewcommand{\lstlistoflistings}{\begingroup
+   \tocfile{\lstlistlistingname}{lol}
+\endgroup}
+
+%
+% keine Liste der Listings im Inhaltsverzeichnis!
+%
+%\addtocontents{lol}{\protect\addvspace{10\p@}}%
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% ein paar brauchbare neue Befehle
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\newcommand{\changefont}[3]{\fontfamily{#1}\fontseries{#2}\fontshape{#3}\selectfont}
+
+\newcommand{\bin}[1]{\text{°#1°}}
+%\newcommand{\mycode}[1]{\changefont{cmtt}{m}{n}#1\normalfont}
+%\newcommand{\mycode}[1]{\changefont{pcr}{b}{n}#1\normalfont}
+%\newcommand{\mycode}[1]{\changefont{pcr}{m}{n}#1\normalfont}
+%\newcommand{\inlinejavacode}[1]{{\ttfamily#1}}
+%\newcommand{\inlinexmlcode}[1]{{\ttfamily#1}}
+%\newcommand{\inlinejavacode}[1]{{\small\ttfamily#1}}
+%\newcommand{\inlinexmlcode}[1]{{\small\ttfamily#1}}
+\newcommand{\inlinejavacode}[1]{\lstinline[backgroundcolor=\color{white},basicstyle=\ttfamily\small]{#1}}
+\newcommand{\inlinexmlcode}[1]{\lstinline[language=XML,backgroundcolor=\color{white},basicstyle=\ttfamily\small]{#1}}
+
+\newcommand{\hex}[1]{\text{'#1'}}
+\newcommand{\LE}{\ensuremath{\text{L}_\text{e}}}
+\newcommand{\NE}{\ensuremath{\text{N}_\text{e}}}
+\newcommand{\LC}{\ensuremath{\text{L}_\text{c}}}
+\newcommand{\NC}{\ensuremath{\text{N}_\text{c}}}
+\newcommand{\concat}{\ensuremath{||}}
+
+\newcommand{\iso}[1]{ISO/IEC #1}
+\newcommand{\isostand}[1]{ISO/IEC 7816-#1}
+
+\newcommand{\ra}{\mbox{$\rightarrow$ }}
+
+\newcommand{\zb}{z.B. }
+\newcommand{\bzw}{bzw. }
+\newcommand{\vgl}{vgl. }
+\newcommand{\etc}{etc.}
+\newcommand{\engl}[0]{engl. }
+\newcommand{\gedankenstrich}{-- }
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Anpassung der Tabellenumgebung
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\newcolumntype{L}[1]{>{\raggedright}p{#1}}
+\newcolumntype{C}[1]{>{\centering}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft}p{#1}}
+
+\setlength{\extrarowheight}{2pt}
+
+%=========================================================================================================================================
+%=========================================================================================================================================
+% BEGINN DES DOKUMENTS
+%=========================================================================================================================================
+%=========================================================================================================================================
+\begin{document}
+
+\frontmatter
+
+\maketitle
+\newpage
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! Zitat wird nur bei MA und DA eingebunden
+% !!!!!!!!!!!!!!!!
+\ifthenelse{\boolean{ZITAT}}{
+  \begin{flushright}
+    \textit{Zitat, falls gewünscht\\
+    \begin{footnotesize}von wem?\end{footnotesize}}
+  \end{flushright}
+}{
+}
+\vspace*{28mm}
+
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Affidavit / Eidesstattliche Erklärung
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% !!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! Aktuelle Version der Studienabteilung nutzen!
+% !!!!!!!!!!!!!!!!
+\ifthenelse{\boolean{ENG}}{
+  %
+  % --> http://www.uni-klu.ac.at/studabt/downloads/affidavit.pdf
+  %
+  \begin{center}{\normalfont\sffamily\LARGE\bfseries Affidavit}\end{center} \vspace*{3mm}
+I hereby declare in lieu of an oath that
+  \begin{itemize}
+    \item[-] the submitted academic paper is entirely my own work and that no auxiliary materials have been used other than those indicated;
+    \item[-] I have fully disclosed all assistance received from third parties during the process of writing the paper, including any significant advice from supervisors;
+    \item[-] any contents taken from the works of third parties or my own works that have been included either literally or in spirit have been appropriately marked and the respective source of the information has been clearly identified with precise bibliographical references (e.g. in footnotes);
+    \item[-] to date, I have not submitted this paper to an examining authority either in Austria or abroad and that
+    \item[-] the digital version of the paper submitted for the purpose of plagiarism assessment is fully consistent with the printed version.
+  \end{itemize}
+  I am aware that a declaration contrary to the facts will have legal consequences.
+  \vspace{2cm}
+
+  \ph{signature} \hfill Klagenfurt, \ph{date}
+)
+}{
+  %
+  % --> Am 29.03.2017 mit online verfügbarer Version abgeglichen
+  %
+  \begin{center}{\normalfont\sffamily\LARGE\bfseries Eidesstattliche Erklärung}\end{center} \vspace*{3mm}
+  Ich versichere an Eides statt, dass ich
+  \begin{itemize}
+    \item[-] die eingereichte wissenschaftliche Arbeit selbstständig verfasst und andere als die angegebenen Hilfsmittel nicht benutzt habe,
+    \item[-] die während des Arbeitsvorganges von dritter Seite erfahrene Unterstützung, einschließlich signifikanter Betreuungshinweise, vollständig offengelegt habe,
+    \item[-] die Inhalte, die ich aus Werken Dritter oder eigenen Werken wortwörtlich oder sinngemäß übernommen habe, in geeigneter Form gekennzeichnet und den Ursprung der Information durch möglichst exakte Quellenangaben (z.B. in Fußnoten) ersichtlich gemacht habe,
+    \item[-] die Arbeit bisher weder im Inland noch im Ausland einer Prüfungsbehörde vorgelegt habe und
+    \item[-] zur Plagiatskontrolle eine digitale Version der Arbeit eingereicht habe, die mit der gedruckten Version übereinstimmt.
+  \end{itemize}
+  Ich bin mir bewusst, dass eine tatsachenwidrige Erklärung rechtliche Folgen haben wird.
+  \vspace{2cm}
+
+  \ph{Unterschrift} \hfill \ph{Datum}, Klagenfurt
+}
+
+\newpage
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Danksagung
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% !!!!!!!!!!!!!!!! Zumindest bei Bakkalaureats-, Masterarbeit sollten Sie bedenken, dass
+% !!! ANPASSEN !!! einige Personen einige Mühen auf sich genommen haben, damit die Abgabe möglich war!
+% !!!!!!!!!!!!!!!! Danksagung wird nur bei BA, MA und DA eingebunden
+%
+\ifthenelse{\boolean{DANK}}{
+  \vspace*{28mm}
+  \ifthenelse{\boolean{ENG}}{
+    \begin{center}{\normalfont\sffamily\LARGE\bfseries Acknowledgements}\end{center} \vspace*{3mm}
+  }{
+    \begin{center}{\normalfont\sffamily\LARGE\bfseries Danksagung}\end{center} \vspace*{3mm}
+  }
+  Unser Dank gilt Raphael Wigoutschnigg, da diese Vorlage für wissenschaftliche Arbeiten der Gruppe Systemsicherheit
+  (syssec) auf den LaTeX-Files seiner Diplomarbeit aufbaut.
+}{
+  \newpage
+}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Zusammenfassung
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !!! ANPASSEN !!! ZUSAMMENFASSUNG MUSS ENTHALTEN SEIN UND DARF NICHT GELÖSCHT WERDEN !!!
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\begin{abstract}
+Diese Arbeit beschäftigt sich mit der vorgeschlagenen Formatvorlage für wissenschaftliche Arbeiten der Forschungsgruppe Systemsicherheit. Es steht Ihnen selbstverständlich frei, die Vorlage an Ihre Bedürfnisse (und Ihren Geschmack) anzupassen. Zudem enthält dieser Text einige spezielle Tipps und Richtlinien für DiplomandInnen. Falls Sie Fehler entdecken, Wünsche oder Anregungen bzgl. der Formatvorlage haben, so senden Sie diese bitte per eMail an \href{mailto:peter@syssec.at}{peter@syssec.at}).
+
+\vspace*{2cm}
+
+{\color{blue}
+  \begin{center}{\normalfont\sffamily\Large\bfseries Wichtige Hinweise}\end{center}
+  \begin{itemize}
+    \item Diese Vorlage kann ohne Änderungen mittels PDFLaTeX von MikTeX compiliert werden. Daher müssen auch die
+        Abbildungen als PDF vorliegen.
+    \item Muss zur Compilierung aber LaTeX genutzt werden, da psfrag (oder Ähnliches verwendet wird),dann darf das Package
+        hyperref nicht verwendet werden \ra Package hyperref (inkludiert am Beginn dieser Datei) auskommentieren und
+        $\backslash$newcommand\{$\backslash$href\}[2]\{\#2\} definieren. Abbildungen müssen dann als eps vorliegen.
+    \item Damit das Literaturverzeichnis erzeugt wird, muss ``bibtex thesis'' aufgerufen werden.
+    \item Damit das Abkürzungsverzeichnis erzeugt wird, muss ``nomenclature.bat'' aufgerufen werden.
+    \item Einige Dokumente die den Umgang mit LaTeX und diversen Packages beschreiben, finden Sie im Verzeichnis ``README''.
+    \item Textstellen (wie Datumsangeben oder Namen) die anzupassen sind, wurden teilweise mit Platzhaltern der Form
+        \ph{BESCHREIBUNG} versehen! Nicht markierte Stellen der Titelseite, die gegebenenfalls anzupassen sind, umfassen
+          \begin{itemize}
+            \item Bezeichnung des Studiums und
+            \item Name der betreuenden Assistentin bzw. des betreuenden Assistenten.
+          \end{itemize}
+    \item Vor dem Ausdruck für die gebundene Masterarbeit ist die boolesche Variable ``FINAL'' (siehe Zeile 49 in dieser Datei)
+        auf ``true'' zu setzen! Nicht ersetzte Platzhalter -- das sind Kommandos der Form $\backslash$ph\{\ldots\} -- werden dann beim Aufruf von PDFTex zu einer Fehlermeldung führen.
+    \item Die aktuelle Version dieses Dokuments finden Sie auf \href{http://www.syssec.at/downloads}{http://www.syssec.at/downloads/}.
+  \end{itemize}
+}
+\end{abstract}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Inhaltsverzeichnis
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\newtableofcontents
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% einzelne Kapitel
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\mainmatter   % arabic page numbering
+
+%\include{einleitung/einleitung}
+
+\include{grundlagen/grundlagen}
+
+\include{tipps/tipps}
+
+%\include{smartcards/smartcards}
+
+%\include{simulator/simulator}
+
+%\include{ausblick/ausblick}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Anhang
+%-----------------------------------------------------------------------------------------------------------------------------------------
+%
+% Falls nicht sinnvoll, dann auskommentieren!
+%
+\appendix
+
+\include{appendix/appendix}
+
+%unnötig% \listoffigures
+%unnötig% \listoftables
+%unnötig% \lstlistoflistings
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Abkürzungsverzeichnis --> Zum Sammeln der Abkürzungen "nomenclature.bat" aufrufen!
+%-----------------------------------------------------------------------------------------------------------------------------------------
+%
+% Falls nicht sinnvoll (weil bspw. zu wenig), dann auskommentieren!
+%
+ \include{abk}
+
+ %\markboth{\uppercase{\nomname}}{\uppercase{\nomname}}
+ \markboth{\nomname}{\nomname}
+ \printnomenclature
+ \newpage
+ \markboth{}{}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Literatur
+%-----------------------------------------------------------------------------------------------------------------------------------------
+%
+% C:\Programme\MiKTeX 2.7\bibtex\bst\base\alpha.bst
+%
+%   "\begin{thebibliography}{"  longest.label  * "X}" * write$ newline$
+%   "\begin{thebibliography}{MOV96}" write$ newline$
+%
+
+\pagestyle{fancy}
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+\fancyhead[LE,RO]{\thepage}
+
+\def\urlprefix{}
+
+%---------------
+% Ein paar Tipps
+%---------------
+% Für Korrekte Einrückung die "längste" Abkürzung (hier MVO96) in thesis.bbl eintragen!
+%
+% Kleinigkeiten kann man ganz am Schluss ebenfalls direkt in der bbl-Datei ändern,
+% danach aber nicht mehr bibtex oder pdftexify aufrufen, sonst wird die Datei überschrieben!
+%
+% Ist der Autor keine natürliche Person (mit Vor- und Nachname), dann ist es besser statt
+% bzw. zusätzlich zum "author" das feld "key" zu verwenden und den Autor (die Institution)
+% direkt in den Titel schreiben (vlg. Eintrag zu \cite{DSA})
+%
+% Wenn \bibliographystyle{syssec} mit nicht korrigierbaren Fehlern abbricht, dann auf
+% \bibliographystyle{alpha} umsteigen. Ist nicht ganz so schön, aber gut getestet und
+% nahezu fehlerfrei.
+%
+
+%\bibliographystyle{alpha}  % falls syssec zu Problemen führt
+ \bibliographystyle{syssec}
+ \bibliography{thesis}
+
+%
+% Dummies für 2 Seiten Literatur
+%
+\nocite{RSA, DES, Rijndael, DSA, ECDSA, diffkrypto, HandCrypto, HandChip, ChipAnw, Ashb00, BeKP91, BeKH01, Breu84, Chen00}
+
+%=========================================================================================================================================
+%=========================================================================================================================================
+\end{document}
+%=========================================================================================================================================
+%=========================================================================================================================================
