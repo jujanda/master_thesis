@@ -5,13 +5,13 @@
 %===   V2.1  290317                                   ==================================================================
 %=======================================================================================================================
 %=======================================================================================================================
-\documentclass[11pt,twoside,openright]{klureport}
+%\documentclass[11pt,twoside,openright]{klureport}
 
 % !!!!!!!!!!!!!!!!
 % !!! ANPASSEN !!! Bei Verwendung der Englischen Sprache Option "english" angeben.
 % !!!!!!!!!!!!!!!!
 %
-%\documentclass[11pt,twoside,openright,english]{klureport}
+\documentclass[11pt,twoside,openright,english]{klureport}
 %
 \usepackage[latin1]{inputenc}
 \usepackage{graphicx}
@@ -46,11 +46,11 @@
 % !!!!!!!!!!!!!!!!
 % !!! ANPASSEN !!! Autorin bzw. Autor der PDF-Datei
 % !!!!!!!!!!!!!!!!
-    pdfauthor={Peter Schartner},
+    pdfauthor={Julian Janda},
 % !!!!!!!!!!!!!!!!
 % !!! ANPASSEN !!! Titel der PDF-Datei
 % !!!!!!!!!!!!!!!!
-    pdftitle={syssec Formatvorlage + Tipps für wissenschaftliche Arbeiten},
+    pdftitle={Investigating Adaptive Rate Control in NDN-RTC},
 % !!!!!!!!!!!!!!!!
 % !!! ANPASSEN !!! Stichwörter
 % !!!!!!!!!!!!!!!!
@@ -100,7 +100,7 @@
 %             --> \documentclass[11pt,twoside,openright]{klureport}
 %
 \newboolean{ENG}
-\setboolean{ENG}{false}
+\setboolean{ENG}{true}
 
 % !!!!!!!!!!!!!!!!
 % !!! ANPASSEN !!! Geschlecht der Autorin bzw. des Autors
@@ -109,7 +109,7 @@
 % FEMALE = false --> Männliche Bezeichner auf Titelseite
 %
 \newboolean{FEMALE}
-\setboolean{FEMALE}{true}
+\setboolean{FEMALE}{false}
 
 % !!!!!!!!!!!!!!!!
 % !!! ANPASSEN !!! Typ der wissenschaftlichen Arbeit
@@ -129,11 +129,11 @@
 % !!! ANPASSEN !!! Individuelle Daten der Titelseite
 % !!!!!!!!!!!!!!!!
  \studname{Angewandte Informatik}
- \title{syssec Formatvorlage \\
-        Tipps für wissenschaftliche Arbeiten}
- \author{\ph{Vorname} \ph{Nachname}}
- \advisor{Assoc.Prof.~Dr.~Peter~Schartner}
- \version{\ph{0.01 -- 0.99}}
+ \title{Investigating Adaptive Rate Control \\
+ 	 in NDN-RTC}
+ \author{\ph{Julian} \ph{Janda}}
+ \advisor{Univ.-Prof. Dipl.-Ing. Dr. Hermann Hellwagner}
+ \version{\ph{0.01}}
  \date{\ph{DATUM DER ABGABE}}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
@@ -236,7 +236,7 @@
  \city{Klagenfurt}
  \fakultaetname{Fakultät für Technische Wissenschaften}
  \institute{Institut für Angewandte Informatik}
- \researchgroup{Forschungsgruppe Systemsicherheit}
+ \researchgroup{Forschungsgruppe Informattionstechnik}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 % Kontaktadresse
@@ -247,7 +247,7 @@
 \ifthenelse{\boolean{ENG}}{
     \lowertitleback{
       In case of comments or problems, please contact the System Security Research Group
-      (\href{mailto:info@syssec.at}{info@syssec.at}) or the author (\href{mailto:peter@syssec.at}{\ph{email}}).
+      (\href{mailto:info@syssec.at}{info@syssec.at}) or the author (\href{mailto:jjanda@edu.aau.at}{\ph{email}}).
     }
 }{
   \ifthenelse{\boolean{FEMALE}}{
