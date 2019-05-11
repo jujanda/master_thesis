@@ -1,35 +1,34 @@
-\contentsline {chapter}{\numberline {1}Grundlagen}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Typen von Chipkarten}{1}{section.1.1}
-\contentsline {subsection}{\numberline {1.1.1}Speicherchipkarten}{1}{subsection.1.1.1}
-\contentsline {subsection}{\numberline {1.1.2}BER-TLV}{2}{subsection.1.1.2}
-\contentsline {subsubsection}{Tag}{2}{subsubsection*.2}
-\contentsline {section}{\numberline {1.2}Kein 1.1 ohne 1.2}{3}{section.1.2}
-\contentsline {section}{\numberline {1.3}Keine mehrzeiligen \"Uberschriften; das sieht schrecklich aus und l\"asst sich immer vermeiden!}{4}{section.1.3}
-\contentsline {section}{\numberline {1.4}Keine mehrzeiligen \"Uberschriften}{4}{section.1.4}
-\contentsline {chapter}{\numberline {2}Tipps}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Wichtiges zum Ablauf der (Master-)Arbeit}{5}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Am Anfang}{5}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Nach dem ersten Drittel}{5}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Nach der H\"alfte (oder zumindest 1 Mal pro Semester)}{5}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}Sp\"atestens 10 Wochen vor der Masterpr\"ufung}{5}{subsection.2.1.4}
-\contentsline {subsection}{\numberline {2.1.5}Sp\"atestens 5 Wochen vor der Masterpr\"ufung}{6}{subsection.2.1.5}
-\contentsline {subsection}{\numberline {2.1.6}3 Wochen vor Masterpr\"ufung (betrifft Gruppe syssec)}{6}{subsection.2.1.6}
-\contentsline {subsection}{\numberline {2.1.7}Endlich: Der Vortrag bei der Masterpr\"ufung (oder Endpr\"asentation)}{6}{subsection.2.1.7}
-\contentsline {subsection}{\numberline {2.1.8}Einige Links (Stand 02-2008)}{6}{subsection.2.1.8}
-\contentsline {subsection}{\numberline {2.1.9}Diverses}{7}{subsection.2.1.9}
-\contentsline {section}{\numberline {2.2}Wichtiges zu Bakkalaureatsarbeiten}{7}{section.2.2}
-\contentsline {section}{\numberline {2.3}Wichtiges zu Seminararbeiten}{7}{section.2.3}
-\contentsline {section}{\numberline {2.4}Richtlinien und Tipps f\"ur wissenschaftliche Arbeiten}{7}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}\"Au\IeC {\ss }ere Form}{7}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Gliederung}{8}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Text}{9}{subsection.2.4.3}
-\contentsline {subsection}{\numberline {2.4.4}Abbildungen und Tabellen}{9}{subsection.2.4.4}
-\contentsline {subsection}{\numberline {2.4.5}Formeln}{10}{subsection.2.4.5}
-\contentsline {subsection}{\numberline {2.4.6}Diverses}{10}{subsection.2.4.6}
-\contentsline {subsection}{\numberline {2.4.7}Ausdruck und Stil}{10}{subsection.2.4.7}
-\contentsline {subsection}{\numberline {2.4.8}Zitierrichtlinien}{11}{subsection.2.4.8}
-\contentsline {subsection}{\numberline {2.4.9}Literatur}{11}{subsection.2.4.9}
-\contentsline {chapter}{\numberline {A}Implementierungen}{13}{appendix.A}
-\contentsline {section}{\numberline {A.1}GET CHALLENGE}{13}{section.A.1}
-\contentsline {section}{\numberline {A.2}Kein A.1 ohne A.2}{14}{section.A.2}
-\contentsline {chapter}{Bibliography}{15}{appendix*.3}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Motivation for ICN}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}NDN Fundamentals}{3}{section.2.2}
+\contentsline {section}{\numberline {2.3}NDN Specifics}{3}{section.2.3}
+\contentsline {chapter}{\numberline {3}Topic}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}NDNRTC}{5}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Introduction to NDNRTC}{5}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}NDNRTC workflow/specifics}{5}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}NDNRTC future work}{6}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}ARC}{6}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}ARC Fundamentals}{6}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}ARC Specifics (Adaption logics)}{6}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Previous Attempts to Integrate ARC in NDNRTC}{6}{section.3.3}
+\contentsline {chapter}{\numberline {4}Implementation}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}Running NDNRTC in Linux}{9}{section.4.1}
+\contentsline {section}{\numberline {4.2}NDNRTC Code Structure (Visualization tools/attempts)}{9}{section.4.2}
+\contentsline {section}{\numberline {4.3}Thread Switching Implementation}{9}{section.4.3}
+\contentsline {section}{\numberline {4.4}ARC Module Implementation}{10}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}ARC on Producer vs Consumer}{10}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Selection/Integration of Adaption Logics}{10}{subsection.4.4.2}
+\contentsline {section}{\numberline {4.5}ARC Module Integration (where to best integrate the module)}{10}{section.4.5}
+\contentsline {chapter}{\numberline {5}Evaluation}{11}{chapter.5}
+\contentsline {section}{\numberline {5.1}Theoretical Setup}{11}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Video Sources}{11}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Network Shaping}{11}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Evaluated Parameters}{12}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}Software Setup}{12}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Docker Container}{12}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Emulation Library}{12}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Execution Engine}{12}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Results}{13}{section.5.3}
+\contentsline {chapter}{\numberline {6}Conclusion}{15}{chapter.6}
+\contentsline {chapter}{Bibliography}{17}{appendix*.2}

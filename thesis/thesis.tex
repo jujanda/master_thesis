@@ -236,7 +236,7 @@
  \city{Klagenfurt}
  \fakultaetname{Fakultät für Technische Wissenschaften}
  \institute{Institut für Angewandte Informatik}
- \researchgroup{Forschungsgruppe Informattionstechnik}
+ \researchgroup{Forschungsgruppe Informationstechnik}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 % Kontaktadresse
@@ -429,7 +429,7 @@
 % !!!!!!!!!!!!!!!!
 \ifthenelse{\boolean{ZITAT}}{
   \begin{flushright}
-    \textit{Zitat, falls gewünscht\\
+    \textit{\ph{Zitat}, falls gewünscht\\
     \begin{footnotesize}von wem?\end{footnotesize}}
   \end{flushright}
 }{
@@ -493,12 +493,14 @@ I hereby declare in lieu of an oath that
   \vspace*{28mm}
   \ifthenelse{\boolean{ENG}}{
     \begin{center}{\normalfont\sffamily\LARGE\bfseries Acknowledgements}\end{center} \vspace*{3mm}
-  }{
-    \begin{center}{\normalfont\sffamily\LARGE\bfseries Danksagung}\end{center} \vspace*{3mm}
   }
-  Unser Dank gilt Raphael Wigoutschnigg, da diese Vorlage für wissenschaftliche Arbeiten der Gruppe Systemsicherheit
-  (syssec) auf den LaTeX-Files seiner Diplomarbeit aufbaut.
-}{
+	I would like to thank \ph{helpful people}.
+%  {
+%    \begin{center}{\normalfont\sffamily\LARGE\bfseries Danksagung}\end{center} \vspace*{3mm}
+%  }
+%  Unser Dank gilt Raphael Wigoutschnigg, da diese Vorlage für wissenschaftliche Arbeiten der Gruppe Systemsicherheit
+%  (syssec) auf den LaTeX-Files seiner Diplomarbeit aufbaut.
+%}{
   \newpage
 }
 
@@ -547,11 +549,58 @@ Diese Arbeit beschäftigt sich mit der vorgeschlagenen Formatvorlage für wissensc
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \mainmatter   % arabic page numbering
 
-%\include{einleitung/einleitung}
+%Abstract
+%Introduction
+%Background
+%	Motivation for ICN
+%	NDN Fundamentals
+%	NDN Specifics
+%Topic
+%	NDNRTC
+%		Introduction to NDNRTC
+%		NDNRTC workflow/specifics
+%		NDNRTC future work (arc)
+%	ARC
+%		ARC Fundamentals
+%		ARC Specifics (Adaption logics)
+%	Previous Attempts to Integrate ARC in NDNRTC
+%Implementation
+%	Running NDNRTC in Linux
+%	NDNRTC Code Structure (Visualization tools/attempts)
+%	Thread Switching Implementation
+%	ARC Module Implementation
+%		ARC on Producer vs Consumer
+%		Selection/Integration of Adaption Logics
+%	ARC Module Integration (where to best integrate the module)	 
+%Evaluation
+%	Theoretical Setup
+%		Video Sources
+%		Network shaping	
+%		Evaluated Parameters
+%	Software Setup
+%		Docker Container
+%		Emulation Library 
+%		Execution Engine
+%Results
+%Conclusion/Future work
+%Bibliography
 
-\include{grundlagen/grundlagen}
 
-\include{tipps/tipps}
+\include{introduction/introduction}
+
+\include{background/background}
+
+\include{topic/topic}
+
+\include{implementation/implementation}
+
+\include{evaluation/evaluation}
+
+\include{conclusion/conclusion}
+
+%\include{grundlagen/grundlagen}
+
+%\include{tipps/tipps}
 
 %\include{smartcards/smartcards}
 
@@ -567,7 +616,7 @@ Diese Arbeit beschäftigt sich mit der vorgeschlagenen Formatvorlage für wissensc
 %
 \appendix
 
-\include{appendix/appendix}
+%\include{appendix/appendix}
 
 %unnötig% \listoffigures
 %unnötig% \listoftables
