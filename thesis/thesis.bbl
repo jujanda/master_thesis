@@ -1,4 +1,4 @@
-\begin{thebibliography}{MeVO96}
+\begin{thebibliography}{MQGW12}
 
 \bibitem[Ashb00]{Ashb00}
 J.~D.~M. Ashbourn: {Biometrics : Advanced Identify Verification: The Complete
@@ -31,13 +31,6 @@ J.~Daemen, V.~Rijmen: The Block Cipher Rijndael. \emph{In: CARDIS '98:
   Proceedings of the The International Conference on Smart Card Research and
   Applications}, Springer-Verlag, London, UK (2000), 277--284.
 
-\bibitem[ITU97]{ITU:X.690}
-{International Telecommunication Union}: Information technology -- {ASN.1}
-  encoding rules: Specification of Basic Encoding Rules {(BER),}Canonical
-  Encoding Rules {(CER)} and Distinguished Encoding Rules{(DER)} (1997),
-  \urlprefix\url{http://www.itu.int}, iTU-T Rec. X.690 (2002) | ISO/IEC
-  8825-1:2002.
-
 \bibitem[JoMV01]{ECDSA}
 D.~Johnson, A.~Menezes, S.~A. Vanstone: {The Elliptic Curve Digital Signature
   Algorithm (ECDSA)}. In: \emph{International Journal on Information Security},
@@ -46,6 +39,11 @@ D.~Johnson, A.~Menezes, S.~A. Vanstone: {The Elliptic Curve Digital Signature
 \bibitem[MeVO96]{HandCrypto}
 A.~J. Menezes, S.~A. Vanstone, P.~C.~V. Oorschot: Handbook of Applied
   Cryptography. CRC Press, Inc., Boca Raton, FL, USA (1996).
+
+\bibitem[MQGW12]{MQGW12}
+K.~{Miller}, E.~{Quacchio}, G.~{Gennari}, A.~{Wolisz}: Adaptation algorithm for
+  adaptive streaming over HTTP. \emph{In: 2012 19th International Packet Video
+  Workshop (PV)} (2012), 173--178.
 
 \bibitem[NIST77]{DES}
 NIST: {Data Encryption Standard}, \emph{Federal information processing
@@ -69,5 +67,8 @@ W.~Rankl: Chipkartenanwendungen. Carl Hanser Verlag München Wien (2006),
 R.~L. Rivest, A.~Shamir, L.~M. Adleman: A Method for Obtaining Digital
   Signatures and Public-Key Cryptosystems. In: \emph{Communications of the
   ACM}, 21, 2 (1978), 120--126.
+
+\bibitem[TOD]{TODO01}
+Guidelines for Implementation: DASH-AVC/264 Test cases and Vectors.
 
 \end{thebibliography}
