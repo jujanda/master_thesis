@@ -10,47 +10,51 @@ A level-1 auxiliary file: conclusion/conclusion.aux
 A level-1 auxiliary file: abk.aux
 The style file: syssec.bst
 Database file #1: thesis.bib
+Warning--entry type for "TODO02" isn't style-file defined
+--line 136 of file thesis.bib
 Warning--to sort, need author or key in TODO01
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 16 entries,
+Warning--empty booktitle in TMRP15
+Warning--empty pages in TMRP15
+You've used 14 entries,
             3068 wiz_defined-function locations,
-            706 strings with 6838 characters,
-and the built_in function-call counts, 7151 in all, are:
-= -- 557
-> -- 236
-< -- 7
-+ -- 89
-- -- 87
-* -- 492
-:= -- 1013
-add.period$ -- 31
-call.type$ -- 16
-change.case$ -- 91
-chr.to.int$ -- 16
+            694 strings with 7429 characters,
+and the built_in function-call counts, 8511 in all, are:
+= -- 688
+> -- 396
+< -- 1
++ -- 162
+- -- 160
+* -- 674
+:= -- 1196
+add.period$ -- 25
+call.type$ -- 14
+change.case$ -- 121
+chr.to.int$ -- 14
 cite$ -- 18
-duplicate$ -- 597
-empty$ -- 673
-format.name$ -- 103
-if$ -- 1511
+duplicate$ -- 629
+empty$ -- 646
+format.name$ -- 176
+if$ -- 1708
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 128
-newline$ -- 51
-num.names$ -- 45
-pop$ -- 244
+missing$ -- 145
+newline$ -- 46
+num.names$ -- 39
+pop$ -- 267
 preamble$ -- 1
-purify$ -- 111
+purify$ -- 127
 quote$ -- 0
-skip$ -- 213
+skip$ -- 214
 stack$ -- 0
-substring$ -- 243
-swap$ -- 275
-text.length$ -- 7
+substring$ -- 364
+swap$ -- 360
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 88
-warning$ -- 1
-while$ -- 47
-width$ -- 20
-write$ -- 139
-(There was 1 warning)
+type$ -- 112
+warning$ -- 3
+while$ -- 60
+width$ -- 17
+write$ -- 126
+(There were 4 warnings)
