@@ -3,32 +3,35 @@
 \contentsline {section}{\numberline {1.2}Thesis Goal}{1}{section.1.2}
 \contentsline {section}{\numberline {1.3}Thesis Structure}{1}{section.1.3}
 \contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Motivation}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}NDN Fundamentals}{3}{section.2.2}
-\contentsline {section}{\numberline {2.3}NDN Specifics}{4}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Naming}{4}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Forwarding}{4}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Caching}{4}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Security}{4}{subsection.2.3.4}
-\contentsline {subsection}{\numberline {2.3.5}Mobility}{4}{subsection.2.3.5}
-\contentsline {section}{\numberline {2.4}NDN Drawbacks}{4}{section.2.4}
-\contentsline {chapter}{\numberline {3}Topic}{5}{chapter.3}
+\contentsline {section}{\numberline {2.1}Named Data Networking}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}NDN Fundamentals}{3}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}NDN Specifics}{3}{subsection.2.1.2}
+\contentsline {subsubsection}{Naming}{3}{subsubsection*.2}
+\contentsline {subsubsection}{Forwarding}{3}{subsubsection*.3}
+\contentsline {subsubsection}{Caching}{3}{subsubsection*.4}
+\contentsline {subsubsection}{Security}{3}{subsubsection*.5}
+\contentsline {subsubsection}{Mobility}{3}{subsubsection*.6}
+\contentsline {subsection}{\numberline {2.1.3}NDN Drawbacks}{3}{subsection.2.1.3}
+\contentsline {section}{\numberline {2.2}Video Streaming Basics}{3}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Adaptive Rate Control}{3}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Adaption logics}{3}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Quality of Experience}{4}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Metrics}{4}{subsection.2.3.1}
+\contentsline {chapter}{\numberline {3}Adaptive Rate Control in NDN-based Video Conferences}{5}{chapter.3}
 \contentsline {section}{\numberline {3.1}NDN-RTC}{5}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Motivation for NDN-RTC}{5}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}NDN-RTC workflow/specifics}{5}{subsection.3.1.2}
 \contentsline {subsection}{\numberline {3.1.3}NDN-RTC future work}{5}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}ARC}{5}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}ARC Fundamentals}{5}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}ARC Specifics (Adaption logics)}{5}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Previous Attempts to Integrate ARC in NDN-RTC (optional)}{5}{section.3.3}
+\contentsline {section}{\numberline {3.2}Previous Attempts to Integrate ARC in NDN-RTC (optional)}{5}{section.3.2}
+\contentsline {section}{\numberline {3.3}Planned System Design}{5}{section.3.3}
 \contentsline {chapter}{\numberline {4}Implementation}{7}{chapter.4}
 \contentsline {section}{\numberline {4.1}Running NDNRTC in Linux}{7}{section.4.1}
 \contentsline {section}{\numberline {4.2}NDNRTC Code Structure (Visualization tools/attempts)}{7}{section.4.2}
 \contentsline {section}{\numberline {4.3}Thread Switching Implementation}{7}{section.4.3}
-\contentsline {section}{\numberline {4.4}ARC Module Implementation}{8}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}ARC on Producer vs Consumer}{8}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Selection/Integration of Adaption Logics}{8}{subsection.4.4.2}
-\contentsline {section}{\numberline {4.5}ARC Module Integration (where to best integrate the module)}{8}{section.4.5}
+\contentsline {section}{\numberline {4.4}ARC Module Implementation}{7}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}ARC on Producer vs Consumer}{7}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Selection/Integration of Adaption Logics}{7}{subsection.4.4.2}
+\contentsline {section}{\numberline {4.5}ARC Module Integration (where to best integrate the module)}{7}{section.4.5}
 \contentsline {chapter}{\numberline {5}Evaluation}{9}{chapter.5}
 \contentsline {section}{\numberline {5.1}Evaluation Setup}{9}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Source Videos}{9}{subsection.5.1.1}
@@ -43,4 +46,4 @@
 \contentsline {chapter}{\numberline {6}Conclusion}{11}{chapter.6}
 \contentsline {section}{\numberline {6.1}Reflection (optional)}{11}{section.6.1}
 \contentsline {section}{\numberline {6.2}Future Work (optional?)}{11}{section.6.2}
-\contentsline {chapter}{Bibliography}{13}{appendix*.2}
+\contentsline {chapter}{Bibliography}{13}{appendix*.7}
