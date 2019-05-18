@@ -10,6 +10,10 @@ B.~Ahlgren, C.~Dannewitz, C.~Imbrenda, D.~Kutscher, B.~Ohlman: A survey of
 author: Integration and Performance Evaluation of MPEG-DASH and DRM Systems in
   an HTML5 Environment.
 
+\bibitem[DaI14]{DaI14}
+DASH Industry Forum: Guidelines for Implementation: DASH-AVC/264 Test cases and
+  Vectors, v1.0 (March 2014), \urlprefix\url{http://www.dashif.org.}
+
 \bibitem[GuBu15]{GuBu15}
 P.~Gusev, J.~Burke: NDN-RTC: Real-Time Videoconferencing over Named Data
   Networking. \emph{In: Proceedings of the 2Nd ACM Conference on
