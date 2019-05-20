@@ -13,10 +13,20 @@
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{NDN Fundamentals}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-hourglass modell + figure \\
+
+hourglass model + figure \\
 interest \& data packets + figure \\
 datagram structure + figure \\
+
+
 Router components and workflow (PID, FIB, CS) + figure \\
+
+In NDN communication is driven by the receivers. If a consumer wants to receive a chunk of data, he sends out an Interest into the network, which contains the name of the resource that should be acquired. The routers then forward the Interest until it ends up at the producer of said resource. The producer then deletes the Interest and in turn sends out a Data packet, containing the requested content, its name and a signature from the producer's key. The Data packet travels back to the consumer, following the reversed path of the Interest that requested it. If the consumer wants further data, he has to send a new Interest. In order for this to work, all NDN routers are equipped with following data structures: A \textbf{Pending Interest Table (PIT)}, a \textbf{Forwarding Information Base (FIB)} and a \textbf{Content Store (CS)}. The PIT is a list containing entries for all Interests that have been forwarded, but not yet satisfied with a Data packet. The FIB has a routing protocol based on name-prefixes and decides where to forward Interests when applicable, following a specific forwarding strategy. The CS is a temporary cache for all the Data packets that recently satisfied Interests. Since an NDN Data packet is meaningful independent from source or destination, it can be distributed by the router itself if the same Data is requested by multiple consumers within a short period of time. Using all these data structures, the forwarding process at an NDN router looks as follows (see also Figure 1):
+
+figure 1 \cite{ZABJ14} \\
+
+When an Interest arrives at the router, the first thing it does is to look if the requested data is already available in the CS. If so, the Interest can be satisfied immediately and the corresponding Data packet is sent back. Otherwise, the router checks if the name contained in the Interest is already saved as entry in the PIT. If it is, someone else has requested the same data but it has not yet arrived. If that is the case, the incoming interface will be added to the PIT entry. If there is no entry yet, a new entry is created and the packet will be forwarded to a node closer to a possible source, which is determined by the FIB via a name-prefix based protocol. If a Data packet arrives at an NDN Router, the PIT is searched for a matching entry. If no entry is found, the data packet will be discarded. Otherwise the Data packet is then duplicated and send to each downstream interface noted there, followed by the removal of said entry from the PIT. The Data is then saved in the CS in case it will be requested again in the near future. This whole process ensures that "routing" is only needed towards the producer of content, since the Data packets simply follow the reversed path of their corresponding Interest. It also ensures that the number of Interest and Data packets stay the same (given that no packets are lost), creating a flow balance, similar to what TCP provides. The key difference here is that TCP was built as an additional layer over IP, while in NDN the flow balance is an in-built feature. In fact, no additional transport layer is required at all, because NDN takes on many of its tasks by itself anyway. The rest (like de-multiplexing, reliable delivery, etc.) will be managed by the applications themselves, if they actually require those features. \cite{ZABJ14}
+
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{NDN Specifics}
