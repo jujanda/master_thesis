@@ -6,39 +6,40 @@
 \BOOKMARK [1][]{section.2.1}{2.1 Named Data Networking}{chapter.2}% 6
 \BOOKMARK [2][]{subsection.2.1.1}{2.1.1 NDN Fundamentals}{section.2.1}% 7
 \BOOKMARK [2][]{subsection.2.1.2}{2.1.2 NDN Specifics}{section.2.1}% 8
-\BOOKMARK [2][]{subsection.2.1.3}{2.1.3 NDN Drawbacks}{section.2.1}% 9
-\BOOKMARK [1][]{section.2.2}{2.2 Video Streaming Basics}{chapter.2}% 10
+\BOOKMARK [2][]{subsection.2.1.3}{2.1.3 NDN Limitations}{section.2.1}% 9
+\BOOKMARK [1][]{section.2.2}{2.2 Adaptive Video Streaming}{chapter.2}% 10
 \BOOKMARK [2][]{subsection.2.2.1}{2.2.1 Adaptive Rate Control}{section.2.2}% 11
 \BOOKMARK [2][]{subsection.2.2.2}{2.2.2 Adaption logics}{section.2.2}% 12
-\BOOKMARK [1][]{section.2.3}{2.3 Quality of Experience}{chapter.2}% 13
-\BOOKMARK [2][]{subsection.2.3.1}{2.3.1 Metrics}{section.2.3}% 14
-\BOOKMARK [0][]{chapter.3}{3 Adaptive Rate Control in NDN-based Video Conferences}{}% 15
-\BOOKMARK [1][]{section.3.1}{3.1 NDN-RTC}{chapter.3}% 16
-\BOOKMARK [2][]{subsection.3.1.1}{3.1.1 Motivation for NDN-RTC}{section.3.1}% 17
-\BOOKMARK [2][]{subsection.3.1.2}{3.1.2 NDN-RTC workflow/specifics}{section.3.1}% 18
-\BOOKMARK [2][]{subsection.3.1.3}{3.1.3 NDN-RTC future work}{section.3.1}% 19
-\BOOKMARK [1][]{section.3.2}{3.2 Previous Attempts to Integrate ARC in NDN-RTC \(optional\)}{chapter.3}% 20
-\BOOKMARK [1][]{section.3.3}{3.3 Planned System Design}{chapter.3}% 21
-\BOOKMARK [0][]{chapter.4}{4 Implementation}{}% 22
-\BOOKMARK [1][]{section.4.1}{4.1 Running NDNRTC in Linux}{chapter.4}% 23
-\BOOKMARK [1][]{section.4.2}{4.2 NDNRTC Code Structure \(Visualization tools/attempts\)}{chapter.4}% 24
-\BOOKMARK [1][]{section.4.3}{4.3 Thread Switching Implementation}{chapter.4}% 25
-\BOOKMARK [1][]{section.4.4}{4.4 ARC Module Implementation}{chapter.4}% 26
-\BOOKMARK [2][]{subsection.4.4.1}{4.4.1 ARC on Producer vs Consumer}{section.4.4}% 27
-\BOOKMARK [2][]{subsection.4.4.2}{4.4.2 Selection/Integration of Adaption Logics}{section.4.4}% 28
-\BOOKMARK [1][]{section.4.5}{4.5 ARC Module Integration \(where to best integrate the module\)}{chapter.4}% 29
-\BOOKMARK [0][]{chapter.5}{5 Evaluation}{}% 30
-\BOOKMARK [1][]{section.5.1}{5.1 Evaluation Setup}{chapter.5}% 31
-\BOOKMARK [2][]{subsection.5.1.1}{5.1.1 Source Videos}{section.5.1}% 32
-\BOOKMARK [2][]{subsection.5.1.2}{5.1.2 Network Shaping}{section.5.1}% 33
-\BOOKMARK [2][]{subsection.5.1.3}{5.1.3 Evaluated Parameters}{section.5.1}% 34
-\BOOKMARK [2][]{subsection.5.1.4}{5.1.4 Docker Container}{section.5.1}% 35
-\BOOKMARK [2][]{subsection.5.1.5}{5.1.5 Emulation Library}{section.5.1}% 36
-\BOOKMARK [2][]{subsection.5.1.6}{5.1.6 Execution Engine}{section.5.1}% 37
-\BOOKMARK [1][]{section.5.2}{5.2 Results}{chapter.5}% 38
-\BOOKMARK [2][]{subsection.5.2.1}{5.2.1 Factual Results}{section.5.2}% 39
-\BOOKMARK [2][]{subsection.5.2.2}{5.2.2 Interpretation}{section.5.2}% 40
-\BOOKMARK [0][]{chapter.6}{6 Conclusion}{}% 41
-\BOOKMARK [1][]{section.6.1}{6.1 Reflection \(optional\)}{chapter.6}% 42
-\BOOKMARK [1][]{section.6.2}{6.2 Future Work \(optional\)}{chapter.6}% 43
-\BOOKMARK [0][]{appendix*.7}{Bibliography}{}% 44
+\BOOKMARK [2][]{subsection.2.2.3}{2.2.3 Adaptive Video Streaming over HTTP}{section.2.2}% 13
+\BOOKMARK [1][]{section.2.3}{2.3 Quality of Experience}{chapter.2}% 14
+\BOOKMARK [2][]{subsection.2.3.1}{2.3.1 Metrics}{section.2.3}% 15
+\BOOKMARK [0][]{chapter.3}{3 Adaptive Rate Control in NDN-based Video Conferences}{}% 16
+\BOOKMARK [1][]{section.3.1}{3.1 NDN-RTC}{chapter.3}% 17
+\BOOKMARK [2][]{subsection.3.1.1}{3.1.1 ARC on Producer vs Consumer}{section.3.1}% 18
+\BOOKMARK [2][]{subsection.3.1.2}{3.1.2 Selection of Adaption Logics}{section.3.1}% 19
+\BOOKMARK [2][]{subsection.3.1.3}{3.1.3 Motivation for NDN-RTC}{section.3.1}% 20
+\BOOKMARK [2][]{subsection.3.1.4}{3.1.4 NDN-RTC workflow/specifics}{section.3.1}% 21
+\BOOKMARK [2][]{subsection.3.1.5}{3.1.5 NDN-RTC future work}{section.3.1}% 22
+\BOOKMARK [1][]{section.3.2}{3.2 Previous Attempts to Integrate ARC in NDN-RTC \(optional\)}{chapter.3}% 23
+\BOOKMARK [1][]{section.3.3}{3.3 Planned System Design}{chapter.3}% 24
+\BOOKMARK [0][]{chapter.4}{4 Implementation}{}% 25
+\BOOKMARK [1][]{section.4.1}{4.1 Running NDNRTC in Linux}{chapter.4}% 26
+\BOOKMARK [1][]{section.4.2}{4.2 NDNRTC Code Structure \(Visualization tools/attempts\)}{chapter.4}% 27
+\BOOKMARK [1][]{section.4.3}{4.3 Thread Switching Implementation}{chapter.4}% 28
+\BOOKMARK [1][]{section.4.4}{4.4 ARC Module Implementation}{chapter.4}% 29
+\BOOKMARK [1][]{section.4.5}{4.5 ARC Module Integration \(where to best integrate the module\)}{chapter.4}% 30
+\BOOKMARK [0][]{chapter.5}{5 Evaluation}{}% 31
+\BOOKMARK [1][]{section.5.1}{5.1 Evaluation Setup}{chapter.5}% 32
+\BOOKMARK [2][]{subsection.5.1.1}{5.1.1 Source Videos}{section.5.1}% 33
+\BOOKMARK [2][]{subsection.5.1.2}{5.1.2 Network Shaping}{section.5.1}% 34
+\BOOKMARK [2][]{subsection.5.1.3}{5.1.3 Evaluated Parameters}{section.5.1}% 35
+\BOOKMARK [2][]{subsection.5.1.4}{5.1.4 Docker Container}{section.5.1}% 36
+\BOOKMARK [2][]{subsection.5.1.5}{5.1.5 Emulation Library}{section.5.1}% 37
+\BOOKMARK [2][]{subsection.5.1.6}{5.1.6 Execution Engine}{section.5.1}% 38
+\BOOKMARK [1][]{section.5.2}{5.2 Results}{chapter.5}% 39
+\BOOKMARK [2][]{subsection.5.2.1}{5.2.1 Factual Results}{section.5.2}% 40
+\BOOKMARK [2][]{subsection.5.2.2}{5.2.2 Interpretation}{section.5.2}% 41
+\BOOKMARK [0][]{chapter.6}{6 Conclusion}{}% 42
+\BOOKMARK [1][]{section.6.1}{6.1 Reflection \(optional\)}{chapter.6}% 43
+\BOOKMARK [1][]{section.6.2}{6.2 Future Work \(optional\)}{chapter.6}% 44
+\BOOKMARK [0][]{appendix*.7}{Bibliography}{}% 45
