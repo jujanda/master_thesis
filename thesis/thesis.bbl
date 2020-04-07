@@ -64,6 +64,12 @@ C.~Timmerer, M.~Maiero, B.~Rainer, S.~Petscharnig, D.~Weinberger, C.~Mueller,
 \bibitem[TOD]{TODO01}
 Guidelines for Implementation: DASH-AVC/264 Test cases and Vectors.
 
+\bibitem[XVSF{\etalchar{+}}13]{XVSF+13}
+G.~Xylomenos, C.~N. Ververidis, V.~A. Siris, N.~Fotiou, C.~Tsilopoulos,
+  X.~Vasilakos, K.~V. Katsaros, G.~C. Polyzos: A survey of information-centric
+  networking research. In: \emph{IEEE communications surveys \& tutorials}, 16,
+  2 (2013), 1024--1049.
+
 \bibitem[ZABJ{\etalchar{+}}14]{ZABJ14}
 L.~Zhang, A.~Afanasyev, J.~Burke, V.~Jacobson, P.~Crowley, C.~Papadopoulos,
   L.~Wang, B.~Zhang, : Named data networking. In: \emph{ACM SIGCOMM Computer

@@ -43,7 +43,7 @@ When an Interest arrives at the router, the first thing it does is to look if th
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{NDN Specifics}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-The following section aims to discuss specific aspects of NDN in further detail. %TODO is this still accurate?
+The following section aims to discuss specific aspects of NDN in further detail. %TODO is this still accurate? Or even necessary?
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Naming}
@@ -63,28 +63,87 @@ One of the biggest and most characteristic features of NDN is the naming itself.
 
 In order to request data, the name must first be known to the consumer. While this may be feasible with static content, dynamic content needs names to be constructible deterministically by both consumer and producer. This can be achieved by using algorithms or rules that are known and agreed upon by both parties. Alternatively, Interest selectors in conjunction with longest prefix matching can be used to request data without knowing the full naming structure. For example, the first section of a video might be requested with \textit{"/itec/videos/demo.mp4/"} and the \textit{"leftmost-child"} selector, which the producer could then answer with sending \textit{"/itec/videos/demo.mp4/1/"}.
 
-Despite this breadth of possibilities in naming, the routers do not actually know most of its meaning, which makes the name \textbf{opaque} to the network. This allows the network and application layer to be developed independently from each other and gives developers the freedom to shape naming to the needs of their application. Nevertheless, there are efforts to streamline this process by providing libraries and guidlines to facilitate naming conventions to some degree.
+Despite this breadth of possibilities in naming, the routers do not actually know most of its meaning, which makes the name \textbf{opaque} to the network. This allows the network and application layer to be developed independently from each other and gives developers the freedom to shape naming to the needs of their application. Nevertheless, there are efforts to streamline this process by providing libraries and guidlines to facilitate naming conventions to some degree. \cite{ZABJ14,ZEBJ10}
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Forwarding}
 %-----------------------------------------------------------------------------------------------------------------------------------------
+%no address exhaustion
+%no address management
+%can use existing *routing* algorithms
+%announce name prefixes of data you serve, which then get distributed to other routers FIB
+%conventional routing protocols can be adapted (OSPF/BGP)
+%individual PIT state per router (per-hop/per-packet)
+%adaptive forwarding strategy module (unsatisfied Interest capacity, priority, load balancing)
+%.NACK (if upstream is down, congestion, etc.) --> maybe alternate path from receiving router?
+%natural multicast support (PIT entries)
+%regulate number of pending interests to regulate traffic load (due to flow balance)
 
+A router in NDN announces name prefixes (similar to current IP prefixes) of the data it is willing to serve, which then get distributed to other router's FIBs. By making small adaptions, many of the current algorithms (e.g. links-state and distance vector) and protocols (e.g. OSPF and BGP) can still be used in NDN. Additionally, having no IP addresses and a theoretically unbounded namespace eliminates problems plaguing the current Internet like address space exhaustion, NAT traversal or address management. 
+
+Each router in NDN manages its own PIT, adding entries for incoming Interests and removing them after they have been satisfied with corresponding Data packets or after a timeout. In case of congestion or upstream link failure, a NACK can be send to downstream neighbors, which can in turn decide to try alternative paths. For this purpose, each router contains a \textbf{forwarding strategy module}, which makes informed decisions about which Interests are forwarded where, unsatisfied Interest list capacity, priority of different Interests and load balancing. The latter can be achieved due to NDNs inherent flow balance. Since each Data packet needs its own Interest, by regulating the rate of forwarding pending Interests NDN routers can effectively regulate traffic load.
+
+Additionally, aggregating entries of incoming Interests for the same Data packet in the PIT allows for natural multicast support, since an incoming Data packet will be forwarded to all downstream neighbors who showed interest. \cite{ZABJ14}
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Caching}
 %-----------------------------------------------------------------------------------------------------------------------------------------
+%packets independently meaningful (name + signature)
+%data chached in content store--> satisfy future requests for the same data
+%origin of data (cache or source) is not differentiated
+%dynamic content benefits if multicast or for retransmission after error
+%repostory instead of todays CDNs (in-network solution, no need for app layer overlay)
+%privacy IP: addresses + payload (who consumers what)
+%privacy NDN: names (what is consumed, but harder to know by whom)
+
+In NDN each Data packet carries a name and signature, making it independently meaningful and identifiable, no matter where it is found in the network. This allows each router along the path to cache packets in their content store, potentially decreasing traffic load and response times if others request the same Data in the near future. Whether the packet ultimately comes from a cache or the source is not differentiated in NDN. While this benefits static files the most, it should be noted that dynamic content can also benefit from in-network caching in case of multicast being used, or if retransmissions are required after a package loss. 
+
+In addition to each routers CS, NDN networks can also provide so called \textbf{Repositories (REPO)}. These caches can save much larger volumes of Data and keep it persistent for longer periods of time. The idea is to offer in-network solutions for today's CDNs, instead of using workarounds with application layer overlays.
+
+Even though Data packets might raise certain security concerns, the specifics are different from IP architectures. Where in current solutions an attacker might see addresses and the payload, NDN packets only have names. While it might be easier to see what is being consumed, the lack of addresses makes it way harder to identify by whom in most cases. \cite{ZABJ14}
+
+%-----
+%
+%Data packets in NDN are identified by name and signature and are therefore valid and meaningful independent from source or destination. This allows them to be cached in a routers CS for later requests, while not making a difference between storage or network channels. For static files NDN can achieve near optimal data delivery, but even dynamic files benefit from in-network caching by using multicast or for retransmission after a packet loss. 
+%
+%%NDN also supports for larger and more persistent in-network storage options called \textbf{Repositories (REPO)}. They could potentially supersede today's Content Delivery Networks (CDN) by offering the same services without the need to involve application layer or use special protocol tricks. 
+%
+%Caching in NDN does however raise some privacy concerns. While in IP architecture the source and destination of a datagram (and possibly its payload as well) were visible throughout the network, in NDN the name is open for read by every node. Although this may allow outsiders to view which data is requested, it is way harder to link it to a consumer, since there are no destinations in an NDN datagram. Nevertheless, in-network caching remains one of the strongest features NDN has to offer.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Security}
 %-----------------------------------------------------------------------------------------------------------------------------------------
+In contrast to TCP/IP, which treated security as an afterthought, one of NDN's architectural principles was to include security as an in-built feature from the get go. \cite{ZEBJ10} Instead of armoring channels to prevent attacks, NDN focuses on data-centric security. More specifically, that means that every Data packet is required to be cryptographically signed. This decouples the consumer's trust from how and where data is obtained and instead shifts the attention to the validity and possible harmfulness of the packet itself. It also means that NDN has inherent resistances against spoofing and tampering, while its architecture and forwarding procedure make it harder to use prefix hijacking, since anomalies caused by attacks can be detected and data be retrieved from alternative paths. 
 
+Furthermore, the absence of destination addresses makes it difficult to target attacks to specific devices. Additionally, PIT timeouts can offer relatively cheap attack detection. Unfortunately, NDN also comes with new attack possibilities and vulnerabilities, like DoS through Interest flooding, although the effect of this type of attacks can be limited by constraining the size of the PIT. \cite{ZABJ14}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-\subsubsection{Mobility}
+\subsubsection{Mobility} \label{subsubsection:Mobility}
 %-----------------------------------------------------------------------------------------------------------------------------------------
+Mobile nodes become more and more important and - like many other things - are just solved as a patch to the original system in TCP/IP. Despite not being a main focus point in NDN either, there are at least thoughts on how it could work within the architecture. When a subscriber moves in NDN after sending an Interest, he can just send a new Interests after moving and re-request everything he has not yet received, since the additional Interests will be suppressed at the first node both routes have in common anyway. The Data packet will however be transported to the old and new location alike. 
 
+Moving publishers is a much more difficult problem though, because after moving the producer has to newly advertise the name prefixes for the information he is hosting, so that all routers with FIB entries pointing to the publisher can be updated. In high mobility scenarios this can produce a large amount of overhead, although it can be partially mitigated by using the Listen First Broadcast Later (LFBL) protocol. LFBL floods the network with interests until a data source is found. The source then listens if any other sources already sent a matching data packet and then proceeds to send one itself if it does not hear of any others. \cite{ZABJ14}
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{NDN Limitations}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-Current obstacles and problems? \\
-Current open questions in science?
+%Current obstacles and problems? \\
+%Current open questions in science?
+
+
+Despite being a quite promising architecture, NDN is far from being flawless or complete. There are several areas and topics that are either not yet researched enough or not tackled at all. The following is a collection of current limitations and shortcomings of NDN:
+\begin{itemize}
+	\item NDN is trending towards a hierarchical name structure, but there is no clear consensus in the community yet, whether flat names or hierarchical ones are actually better suited \cite{XVSF+13}. Hierarchical names can be human readable and are easier to aggregate, but it is unclear if they are scalable enough for worldwide deployment. Flat names on the other hand are easier to administer and are highly scalable with Distributed Hash Tables (DHTs) but it is unclear if DHTs offer needed performance. Additionally, there are also little to no solutions yet regarding versioning, deletion and revocation of names. In TCP/IP this was of little concern to the network layer, but in NDN, where everything is based on the names of data, this is no easy task. In fact, it is not even clear yet at what granularity names should be given. A named object could correspond to a packet, variable-sized information chunks or entire application-level objects \cite{XVSF+13}. What is clear though, is that there is still a long road of research ahead regarding naming in NDN.
+
+	\item While much thought has been spent on solutions for intra-domain routing in NDN, inter-domain routing has not yet received much attention. In fact, this is topic is not even fully fleshed out for current internet architecture \cite{XVSF+13}. On one hand, inter-domain routing is strongly affected by business relationships between the involved parties, on the other hand there are also noticeable limitations when trying to scale the architecture to worldwide sizes. 
+
+	\item As already mentioned in section \ref{subsubsection:Mobility}, publisher mobility is still a major challenge in NDN, due to the large amount of overhead introduced by having to re-advertise after moving and the fact that NDN's name resolution is relatively slow to update.
+
+	\item Even though in-built security is one of the main architectural principles of NDN, it is still based on cryptographic keys. While there are several approaches that could be (and partially have been) investigated, there are no clear solutions yet concerning distribution, managing and revocation of said keys. Additionally, even though the nature of NDN's architecture and workflow offer inherent resistances against many of today's attacks, there are also new, NDN-specific ways to violate privacy. Since names of requested objects are visible on every router, a new form of protection has to be found to mitigate potentially unwanted observations of outsiders.
+
+	\item Due to the nature of NDN, the network layer may potentially gain many new mechanisms and functionalities to enhance the productivity. Features like in-network caching, multicast and multi-path routing also affect the transport layer, requiring a huge redesign. The problem here is though, that NDN is still under active development, so the amount of research that can be done regarding the transport layer is quite limited, but will definitely have to be tackled in the future.
+
+\end{itemize}
+
+Besides all the technical limitations and open questions mention above, there are also business and logistical obstacles to overcome. A world wide deployment of NDN would most certainly have to be incremental. While an overlay solution might be relatively easy, only a full native deployment (a "clean-slate" solution) can really offer all the expected improvements. Furthermore, even under the assumption everything might be technically possible, there are still unanswered questions left like: Which application areas should it be deployed to first? What happens to current CDNs, since they will probably become mostly redundant. How should Internet providers adapt their business models? All of these questions (and many more!) need to be answered before NDN is ready for the world. 
+\cite{XVSF+13}
+
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \section{Adaptive Video Streaming}
