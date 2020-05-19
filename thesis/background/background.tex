@@ -128,7 +128,9 @@ Moving publishers is a much more difficult problem though, because after moving 
 
 
 Despite being a quite promising architecture, NDN is far from being flawless or complete. There are several areas and topics that are either not yet researched enough or not tackled at all. The following is a collection of current limitations and shortcomings of NDN:
+
 \begin{itemize}
+	
 	\item NDN is trending towards a hierarchical name structure, but there is no clear consensus in the community yet, whether flat names or hierarchical ones are actually better suited \cite{XVSF+13}. Hierarchical names can be human readable and are easier to aggregate, but it is unclear if they are scalable enough for worldwide deployment. Flat names on the other hand are easier to administer and are highly scalable with Distributed Hash Tables (DHTs) but it is unclear if DHTs offer needed performance. Additionally, there are also little to no solutions yet regarding versioning, deletion and revocation of names. In TCP/IP this was of little concern to the network layer, but in NDN, where everything is based on the names of data, this is no easy task. In fact, it is not even clear yet at what granularity names should be given. A named object could correspond to a packet, variable-sized information chunks or entire application-level objects \cite{XVSF+13}. What is clear though, is that there is still a long road of research ahead regarding naming in NDN.
 
 	\item While much thought has been spent on solutions for intra-domain routing in NDN, inter-domain routing has not yet received much attention. In fact, this is topic is not even fully fleshed out for current internet architecture \cite{XVSF+13}. On one hand, inter-domain routing is strongly affected by business relationships between the involved parties, on the other hand there are also noticeable limitations when trying to scale the architecture to worldwide sizes. 
@@ -138,6 +140,10 @@ Despite being a quite promising architecture, NDN is far from being flawless or 
 	\item Even though in-built security is one of the main architectural principles of NDN, it is still based on cryptographic keys. While there are several approaches that could be (and partially have been) investigated, there are no clear solutions yet concerning distribution, managing and revocation of said keys. Additionally, even though the nature of NDN's architecture and workflow offer inherent resistances against many of today's attacks, there are also new, NDN-specific ways to violate privacy. Since names of requested objects are visible on every router, a new form of protection has to be found to mitigate potentially unwanted observations of outsiders.
 
 	\item Due to the nature of NDN, the network layer may potentially gain many new mechanisms and functionalities to enhance the productivity. Features like in-network caching, multicast and multi-path routing also affect the transport layer, requiring a huge redesign. The problem here is though, that NDN is still under active development, so the amount of research that can be done regarding the transport layer is quite limited, but will definitely have to be tackled in the future.
+	
+	\item NDN is by design an inherently pull-based architecture. This makes it rather difficult to use for applications and use cases with a push based nature, like conversational services, video streaming and live content. By default, every bit of video data has to be requested by the user due to flow balance, increasing the number of Interests and therefore packets by a significant amount, straining the network in the process. Furthermore, if a consumer wants to receive live content in a timely manner, he would theoretically have to send Interests for Data before it has been produced. This either requires the ability to predict the future or a well thought out strategy and naming scheme on the producer side, which in turn has to be known by the consumer.
+
+	
 
 \end{itemize}
 
@@ -148,25 +154,48 @@ Besides all the technical limitations and open questions mention above, there ar
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \section{Adaptive Video Streaming}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-fundamentals used today?
+Nowadays we find ourselves confronted with an ever-growing demand for video streaming. Video-chats, live-streams, and video on demand make up a significant fraction of today's Internet traffic. Tackling such quantities of data requires efficient handling to keep up with the increasing requirements. Furthermore, static solutions do not offer the needed performance, since network conditions can vary for every consumer and are always prone to change, requiring more adaptive solutions. While there are several approaches to solve this problem, this section focuses on the advancement of adaptive rate control in particular. 
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Adaptive Rate Control}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-what is that? \\
-why is it important?
+This approach focuses on the adaption of a video's bitrate to fit the current requirements and possibilities, dictated by the network capabilities at given moment in time. One consumer-driven approach to do so is by splitting the video in several parts on the consumer side \cite{MQGW12}. Then each part is encoded in a number of representations or bit rates, each representing a different level of quality. The consumer can subsequently decide which quality he wants and start requesting video party of said level. If the network parameters change and require a change in quality to keep the stream up, the consumer can select different representations for the following parts to better fit the new network environment.
+
+It should be noted that with this approach the consumer is the one responsible for analyzing the current network conditions and deciding which level of quality best suits the given situation. This can be done by estimating available future throughput by measuring the current one and making predictions. Additionally, the video buffer on the consumer side can be an indication when to switch to a different representation. a near empty buffer suggests switching to a lower bitrate, while a full one indicates that higher bit rates might be possible. \cite{MQGW12}
+
+While these approaches can lead to very precise adaption to the network situation at hand, one must not forget the human behind the screen who watches the content. Switching content quality every second or buffering for half a minute before the video plays might be exactly what the network demands, but will probably still be detrimental for the user experience. Thus, a careful balance has to be found, requiring the application to juggle network capabilities and switching restrictions, all while keeping start-up delay to a minimum.
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Dynamic Adaptive Streaming over HTTP (DASH)}
+%-----------------------------------------------------------------------------------------------------------------------------------------
+%%ISO/IEC, Information Technology: Dynamic Adaptive Streaming Over
+%%HTTP (DASH) Part 1: Media Presentation Description and Segment
+%Formats, Standard ISO/IEC 23009-1:2012, 2012. [Online]. Available:
+%https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_
+%detail.htm?csnumber=57623
+
+%this whole paragraph could probably be cut if needed.
+Normally when writing applications, one would trust the transport layer to minimize induced delays and deliver data with an appropriate degree of reliability and timeliness \cite{KuAB17}. However, with how tight some time requirements are when it comes to live-streaming and some multimedia content delivery in general, those mechanisms used by TCP \cite{Poot81} might actually be a hindrance. It might better to just skip a frame that did not manage to arrive in time, than to invest network resources to make sure it gets resent, either blocking further frames from playing or being useless on arrival since the video already went on. This is the reason why early approaches focused on using UDP \cite{Poot80}, since it offered a simple base for transport without the extra baggage. Unfortunately, this approach encountered problems with firewalls and other deployment issues, which ultimately resulted in the TCP based HTTP \cite{BePT15} to become the de facto standard for multimedia delivery, since it works out of the box and is let trough most firewall by default.
+
+
+how it works:
+
+\cite{Soda11} (DASH src paper)
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Adaption logics}
 %-----------------------------------------------------------------------------------------------------------------------------------------
 what are those? \\
 which are interesting here? \\
-present a few.
-
-%-----------------------------------------------------------------------------------------------------------------------------------------
-\subsection{Adaptive Video Streaming over HTTP}
-%-----------------------------------------------------------------------------------------------------------------------------------------
-short description of current TCP streaming (basically DASH)
+present a few. 
+how to decide:
+	how to measure network status?
+	how/if to predict changes in network status?
+	when to switch to another quality?
+	what to quality to switch to?
+	how fast to switch to that quality?
+	how often is switching allowed?
+	
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \section{Quality of Experience}

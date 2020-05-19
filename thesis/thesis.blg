@@ -19,45 +19,45 @@ Warning--to sort, need author or key in TODO01
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--empty booktitle in TMRP15
 Warning--empty pages in TMRP15
-You've used 16 entries,
+You've used 20 entries,
             3068 wiz_defined-function locations,
-            709 strings with 7896 characters,
-and the built_in function-call counts, 9564 in all, are:
-= -- 771
-> -- 446
-< -- 1
-+ -- 183
-- -- 180
-* -- 764
-:= -- 1336
-add.period$ -- 28
-call.type$ -- 16
-change.case$ -- 137
-chr.to.int$ -- 16
-cite$ -- 22
-duplicate$ -- 703
-empty$ -- 728
-format.name$ -- 197
-if$ -- 1917
+            733 strings with 8281 characters,
+and the built_in function-call counts, 11222 in all, are:
+= -- 910
+> -- 508
+< -- 2
++ -- 207
+- -- 203
+* -- 885
+:= -- 1584
+add.period$ -- 35
+call.type$ -- 20
+change.case$ -- 161
+chr.to.int$ -- 20
+cite$ -- 26
+duplicate$ -- 836
+empty$ -- 860
+format.name$ -- 224
+if$ -- 2244
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 163
-newline$ -- 52
-num.names$ -- 42
-pop$ -- 303
+missing$ -- 191
+newline$ -- 64
+num.names$ -- 54
+pop$ -- 358
 preamble$ -- 1
-purify$ -- 145
+purify$ -- 171
 quote$ -- 0
-skip$ -- 237
+skip$ -- 284
 stack$ -- 0
-substring$ -- 411
-swap$ -- 404
-text.length$ -- 1
+substring$ -- 465
+swap$ -- 466
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 128
+type$ -- 160
 warning$ -- 4
-while$ -- 65
-width$ -- 20
-write$ -- 142
+while$ -- 78
+width$ -- 24
+write$ -- 174
 (There were 6 warnings)

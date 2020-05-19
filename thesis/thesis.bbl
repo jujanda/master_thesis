@@ -10,6 +10,10 @@ B.~Ahlgren, C.~Dannewitz, C.~Imbrenda, D.~Kutscher, B.~Ohlman: A survey of
 author: Integration and Performance Evaluation of MPEG-DASH and DRM Systems in
   an HTML5 Environment.
 
+\bibitem[BePT15]{BePT15}
+M.~Belshe, R.~Peon, M.~Thomson: Hypertext transfer protocol version 2 (http/2)
+  (2015).
+
 \bibitem[DaI14]{DaI14}
 DASH Industry Forum: Guidelines for Implementation: DASH-AVC/264 Test cases and
   Vectors, v1.0 (March 2014), \urlprefix\url{http://www.dashif.org.}
@@ -42,6 +46,12 @@ D.~Posch, C.~Kreuzberger, B.~Rainer, H.~Hellwagner: Client Starvation: A
   Networking}, ACM-ICN '14, ACM, New York, NY, USA (2014), 183--184,
   \urlprefix\url{http://doi.acm.org/10.1145/2660129.2660162}.
 
+\bibitem[Poot80]{Poot80}
+J.~Postel, : User datagram protocol. In:  (1980).
+
+\bibitem[Poot81]{Poot81}
+J.~Postel, : Transmission control protocol. In:  (1981).
+
 \bibitem[RaPH16]{RaPH16}
 B.~Rainer, D.~Posch, H.~Hellwagner: Investigating the performance of pull-based
   dynamic adaptive streaming in NDN. In: \emph{IEEE Journal on Selected Areas
@@ -50,6 +60,10 @@ B.~Rainer, D.~Posch, H.~Hellwagner: Investigating the performance of pull-based
 \bibitem[SaME17]{SaME17}
 Y.~Sani, A.~Mauthe, C.~Edwards: Adaptive bitrate selection: A survey. In:
   \emph{IEEE Communications Surveys \& Tutorials}, 19, 4 (2017), 2985--3014.
+
+\bibitem[Soda11]{Soda11}
+I.~Sodagar: The mpeg-dash standard for multimedia streaming over the internet.
+  In: \emph{IEEE multimedia}, 18, 4 (2011), 62--67.
 
 \bibitem[TiMR16]{TiMR16}
 C.~Timmerer, M.~Maiero, B.~Rainer: Which adaptation logic? An objective and
