@@ -23,7 +23,7 @@
  \begin{figure}[ht]
  	\centering
  	\includegraphics[width=0.8\textwidth]{figures/Packets_in_the_NDN_Architecture.png}
- 	\figcaption{Packets in the NDN Architecture. \cite{ZABJ14}}
+ 	\figcaption{\textit{"Packets in the NDN Architecture."} \cite{ZABJ14}}
  	\label{fig:fundamentals:NDNPackagestructure}
  \end{figure}
  
@@ -32,7 +32,7 @@
  \begin{figure}[ht]
  	\centering
  	\includegraphics[width=0.8\textwidth]{figures/Forwarding_process_at_NDN_Router.png}
- 	\figcaption{ Forwarding Process at an NDN Node. \cite{ZABJ14}}
+ 	\figcaption{\textit{"Forwarding Process at an NDN Node."} \cite{ZABJ14}}
  	\label{fig:fundamentals:NDNForwardingProcess}
  \end{figure}
 
@@ -43,7 +43,7 @@ When an Interest arrives at the router, the first thing it does is to look if th
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{NDN Specifics}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-The following section aims to discuss specific aspects of NDN in further detail. %TODO is this still accurate? Or even necessary?
+The following section aims to discuss specific aspects of NDN in further detail. %TODO is this even necessary?
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Naming}
@@ -159,9 +159,9 @@ Nowadays we find ourselves confronted with an ever-growing demand for video stre
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Adaptive Rate Control}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-This approach focuses on the adaption of a video's bitrate to fit the current requirements and possibilities, dictated by the network capabilities at given moment in time. One consumer-driven approach to do so is by splitting the video in several parts on the consumer side \cite{MQGW12}. Then each part is encoded in a number of representations or bit rates, each representing a different level of quality. The consumer can subsequently decide which quality he wants and start requesting video party of said level. If the network parameters change and require a change in quality to keep the stream up, the consumer can select different representations for the following parts to better fit the new network environment.
+This approach focuses on the adaption of a video's bitrate to fit the current requirements and possibilities, dictated by the network capabilities at given moment in time. One consumer-driven approach to do so is by splitting the video in several parts on the consumer side \cite{MQGW12}. Then each part is encoded in a number of representations or bit rates, each representing a different level of quality. The consumer can subsequently decide which quality he wants and start requesting video parts of said level. If the network parameters change and require a switch in quality to keep the stream up, the consumer can select different representations for the following parts to better fit the new network environment.
 
-It should be noted that with this approach the consumer is the one responsible for analyzing the current network conditions and deciding which level of quality best suits the given situation. This can be done by estimating available future throughput by measuring the current one and making predictions. Additionally, the video buffer on the consumer side can be an indication when to switch to a different representation. a near empty buffer suggests switching to a lower bitrate, while a full one indicates that higher bit rates might be possible. \cite{MQGW12}
+It should be noted that with this approach the consumer is responsible for analyzing the current network conditions and deciding which level of quality best suits the given situation. This can be done by estimating available future throughput by measuring the current one and making predictions. Additionally, the video buffer on the consumer side can be an indication when to switch to a different representation. A near empty buffer suggests switching to a lower bitrate, while a full one indicates that higher bit rates might be possible. \cite{MQGW12}
 
 While these approaches can lead to very precise adaption to the network situation at hand, one must not forget the human behind the screen who watches the content. Switching content quality every second or buffering for half a minute before the video plays might be exactly what the network demands, but will probably still be detrimental for the user experience. Thus, a careful balance has to be found, requiring the application to juggle network capabilities and switching restrictions, all while keeping start-up delay to a minimum.
 
@@ -174,13 +174,32 @@ While these approaches can lead to very precise adaption to the network situatio
 %https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_
 %detail.htm?csnumber=57623
 
-%this whole paragraph could probably be cut if needed.
-Normally when writing applications, one would trust the transport layer to minimize induced delays and deliver data with an appropriate degree of reliability and timeliness \cite{KuAB17}. However, with how tight some time requirements are when it comes to live-streaming and some multimedia content delivery in general, those mechanisms used by TCP \cite{Poot81} might actually be a hindrance. It might better to just skip a frame that did not manage to arrive in time, than to invest network resources to make sure it gets resent, either blocking further frames from playing or being useless on arrival since the video already went on. This is the reason why early approaches focused on using UDP \cite{Poot80}, since it offered a simple base for transport without the extra baggage. Unfortunately, this approach encountered problems with firewalls and other deployment issues, which ultimately resulted in the TCP based HTTP \cite{BePT15} to become the de facto standard for multimedia delivery, since it works out of the box and is let trough most firewall by default.
+%TODO this whole paragraph could probably be cut if needed.
+Normally when writing applications, one would trust the transport layer to minimize induced delays and deliver data with an appropriate degree of reliability and timeliness \cite{KuAB17}. However, with how tight some time requirements are when it comes to live-streaming and some multimedia content delivery in general, those mechanisms used by TCP \cite{Poot81} might actually be a hindrance. It might better to just skip a frame that did not manage to arrive in time, than to invest network resources to make sure it gets resent, either blocking further frames from playing or being useless on arrival since the video already went on. This is the reason why early approaches focused on using UDP \cite{Poot80}, since it offered a simple base for transport without the extra baggage. Unfortunately, this approach encountered problems with firewalls and other deployment issues, which eventually resulted in the TCP based HTTP \cite{BePT15} to become the more popular choice for multimedia delivery, since it works out of the box and is let trough most firewall by default.  
 
+% \begin{figure}[ht]
+% 	\centering
+% 	\includegraphics[width=0.8\textwidth]{figures/DASH_MPD_structure_example.png}
+% 	\figcaption{The Multimedia Presentation Description hierarchical data model. In this example, MPD contains three periods, period 2 contains three adaptation sets and the adaptation set 1 contains four representations, including three representations with various bit rates and one representation for trick mode. Finally, representation 2 consists of its segment info, which consequently includes its initialization segment and four media segments' information. \cite{Soda11}}
+% 	\label{fig:fundamentals:DASH_MPD_structure}
+% \end{figure}
+ 
+  \begin{figure}[ht]
+  	\centering
+  	\includegraphics[width=0.8\textwidth]{figures/DASH_scope.png}
+  	\figcaption{\textit{"Scope of the MPEG-DASH standard. The formats and functionalities of the red blocks are defined by the specification. The clients control heuristics and media players, which aren't within the standard's scope."} (sic) \cite{Soda11}}
+  	\label{fig:fundamentals:DASH_scope}
+  \end{figure}
 
-how it works:
+Thus the current standard for multimedia consumption is \textbf{MPEG-DASH} \cite{Soda11}. It specifies a format in which the segments for different representations are stored on a server, ready to be downloaded on demand. In order to do so, the customer first requests a so called \textbf{Media Presentation Description (MPD)}. This file contains information about which quality variations are available, their exact parameters and specifications, how frequently they can be switched, in which order they are meant to be consumed and finally the direct links to download corresponding segments. After that, it falls to the client's responsibility to pick the appropriate segment for the time, requirements and current network capabilities. Note that only segments, MPD and their respective parsers (see red sections in \ref{fig:fundamentals:DASH_scope}) are actually defined by the standard, leaving the other components open to competition and individual adaption.
 
-\cite{Soda11} (DASH src paper)
+%how it works:
+%producer has video split up into parts, each available in multiple representations or quality levels
+%consumer requests MPD (Media Presentation Description) file 
+%	--> gets info on all available representations and how to request them (naming schemes/addresses)
+%starts requesting first part of video in high quality
+%can change to another quality after every segment (every few seconds)
+%\cite{Soda11} (DASH src paper)
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Adaption logics}

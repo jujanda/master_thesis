@@ -15,9 +15,9 @@
 \contentsline {section}{\numberline {2.2}Adaptive Video Streaming}{8}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Adaptive Rate Control}{8}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Dynamic Adaptive Streaming over HTTP (DASH)}{9}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Adaption logics}{9}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Quality of Experience}{9}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Metrics}{9}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.2.3}Adaption logics}{10}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Quality of Experience}{10}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Metrics}{10}{subsection.2.3.1}
 \contentsline {chapter}{\numberline {3}Adaptive Rate Control in NDN-based Video Conferences}{11}{chapter.3}
 \contentsline {section}{\numberline {3.1}NDN-RTC}{11}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}ARC on Producer vs Consumer}{11}{subsection.3.1.1}
