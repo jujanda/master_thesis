@@ -187,11 +187,11 @@ Normally when writing applications, one would trust the transport layer to minim
   \begin{figure}[ht]
   	\centering
   	\includegraphics[width=0.8\textwidth]{figures/DASH_scope.png}
-  	\figcaption{\textit{"Scope of the MPEG-DASH standard. The formats and functionalities of the red blocks are defined by the specification. The clients control heuristics and media players, which aren't within the standard's scope."} (sic) \cite{Soda11}}
-  	\label{fig:fundamentals:DASH_scope}
+  	\figcaption{\textit{"Scope of the MPEG-DASH standard. The formats and functionalities of the red blocks are defined by the specification. The clients control heuristics and media players, which aren't within the standard's scope."} \cite{Soda11}}
+  	\label{fig:dash:DASH_scope}
   \end{figure}
 
-Thus the current standard for multimedia consumption is \textbf{MPEG-DASH} \cite{Soda11}. It specifies a format in which the segments for different representations are stored on a server, ready to be downloaded on demand. In order to do so, the customer first requests a so called \textbf{Media Presentation Description (MPD)}. This file contains information about which quality variations are available, their exact parameters and specifications, how frequently they can be switched, in which order they are meant to be consumed and finally the direct links to download corresponding segments. After that, it falls to the client's responsibility to pick the appropriate segment for the time, requirements and current network capabilities. Note that only segments, MPD and their respective parsers (see red sections in \ref{fig:fundamentals:DASH_scope}) are actually defined by the standard, leaving the other components open to competition and individual adaption.
+Thus the current standard for multimedia consumption is \textbf{MPEG-DASH} \cite{Soda11}. It specifies a format in which the segments for different representations are stored on a server, ready to be downloaded on demand. In order to do so, the customer first requests a so called \textbf{Media Presentation Description (MPD)}. This file contains information about which quality variations are available, their exact parameters and specifications, how frequently they can be switched, in which order they are meant to be consumed and finally the direct links to download corresponding segments. After that, it falls to the client's responsibility to pick the appropriate segment for the time, requirements and current network capabilities. Note that only segments, MPD and their respective parsers (see red sections in \ref{fig:dash:DASH_scope}) are actually defined by the standard, leaving the other components open to competition and individual adaption.
 
 %how it works:
 %producer has video split up into parts, each available in multiple representations or quality levels
@@ -204,16 +204,58 @@ Thus the current standard for multimedia consumption is \textbf{MPEG-DASH} \cite
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Adaption logics}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-what are those? \\
-which are interesting here? \\
-present a few. 
-how to decide:
-	how to measure network status?
-	how/if to predict changes in network status?
-	when to switch to another quality?
-	what to quality to switch to?
-	how fast to switch to that quality?
-	how often is switching allowed?
+While splitting multimedia data into segments of different quality levels is a necessary foundation for Adaptive Rate Control, the real challenge lies within selecting the right segment at the appropriate time, based on current network conditions and capabilities. This is the done by a so called \textbf{Adaption Logic}, an algorithm or collection of software mechanisms that handles the decision making behind ARC and can make or break the concept of adaptive streaming. A good adaption logic might strive to answer the following questions: 
+
+\begin{itemize}
+
+\item How do I measure the current network status, in order to extract meaningful information that can be used as base for the other decisions? 
+
+\item Can or should I try to predict changes in network status for the near future? 
+
+\item Under what circumstances do I switch to another representation? 
+
+\item If I decide to select another set of sections, what quality level do I go for, and how big are my steps to get there? 
+
+\item How long should I wait before actually switching to another quality? 
+
+\item How often am I allowed to switch in a given time period?
+
+\end{itemize}
+
+There are a lot of adaption logics out there that try to answer these questions. The following sections will describe some of them in greater detail, based on the works of \cite{TiMR16}.
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{DASH-JS} 
+%-----------------------------------------------------------------------------------------------------------------------------------------
+
+DASH-JS \cite{RLMT12} uses bandwidth estimation based on previous downloads to predict what the future bandwidth might be and chooses a quality for the next segment accordingly. It does so by using a simple equation shown in \ref{equation:adaptionLogics:DASH-JS}, where $b_{n}$ stands for the estimated bandwidth of the next segment that needs to be downloaded.
+
+\begin{equation}
+b_{n} = \dfrac{w_{1}b_{n-1} + w_{2}b_{m}}{w_{1}+w_{2}}
+\label{equation:adaptionLogics:DASH-JS}
+\end{equation}
+
+The next segment's bandwidth is calculated by looking at the calculation of last segment's bandwidth $b_{n-1}$ and the actual measured bandwidth of said segment $b_{m}$. Those values are given different priority with weights $w_{1}$ and $w_{2}$, which default to $w_{1}=0.7$ and $w_{2}=1.3$ according to \cite{RLMT12} if nothing else is specified. Thus the bandwidth for the next segment is calculated by taking the last calculation as a base and adjusting it based on the actual measurements, bringing the previous prediction in line with reality to form a new one. The algorithm then looks at the range of available representations and chooses the one with the highest quality that can still be sustained at the current estimated bandwidth. The initialization of this whole process uses the measured bandwidth of the MPD file download as base.
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Miller et al.}
+%-----------------------------------------------------------------------------------------------------------------------------------------
+Describe Miller et al. \cite{MQGW12b}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Thang et al.}
+%-----------------------------------------------------------------------------------------------------------------------------------------
+Describe Thang et al. \cite{THKP12}
+
+%what are those? \\
+%which are interesting here? \\
+%present a few. 
+%how to decide:
+%	how to measure network status?
+%	how/if to predict changes in network status?
+%	when to switch to another quality?
+%	what to quality to switch to?
+%	how fast to switch to that quality?
+%	how often is switching allowed?
 	
 
 %-----------------------------------------------------------------------------------------------------------------------------------------

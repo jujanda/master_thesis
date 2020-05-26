@@ -1,5 +1,5 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{TMRP{\etalchar{+}}15}
+\begin{thebibliography}{MQGW12b}
 
 \bibitem[ADIK{\etalchar{+}}12]{ADIK12}
 B.~Ahlgren, C.~Dannewitz, C.~Imbrenda, D.~Kutscher, B.~Ohlman: A survey of
@@ -34,10 +34,15 @@ S.~Mastorakis, P.~Gusev, A.~Afanasyev, L.~Zhang: Real-Time Data Retrieval in
   Named Data Networking. \emph{In: 2018 1st IEEE International Conference on
   Hot Information-Centric Networking (HotICN)}, IEEE (2018), 61--66.
 
-\bibitem[MQGW12]{MQGW12}
+\bibitem[MQGW12a]{MQGW12}
 K.~{Miller}, E.~{Quacchio}, G.~{Gennari}, A.~{Wolisz}: Adaptation algorithm for
   adaptive streaming over HTTP. \emph{In: 2012 19th International Packet Video
   Workshop (PV)} (2012), 173--178.
+
+\bibitem[MQGW12b]{MQGW12b}
+K.~Miller, E.~Quacchio, G.~Gennari, A.~Wolisz: Adaptation algorithm for
+  adaptive streaming over HTTP. \emph{In: 2012 19th international packet video
+  workshop (PV)}, IEEE (2012), 173--178.
 
 \bibitem[PKRH14]{PKRH14}
 D.~Posch, C.~Kreuzberger, B.~Rainer, H.~Hellwagner: Client Starvation: A
@@ -57,6 +62,11 @@ B.~Rainer, D.~Posch, H.~Hellwagner: Investigating the performance of pull-based
   dynamic adaptive streaming in NDN. In: \emph{IEEE Journal on Selected Areas
   in Communications}, 34, 8 (2016), 2130--2140.
 
+\bibitem[RLMT12]{RLMT12}
+B.~Rainer, S.~Lederer, C.~M{\"u}ller, C.~Timmerer: A seamless Web integration
+  of adaptive HTTP streaming. \emph{In: 2012 Proceedings of the 20th European
+  Signal Processing Conference (EUSIPCO)}, IEEE (2012), 1519--1523.
+
 \bibitem[SaME17]{SaME17}
 Y.~Sani, A.~Mauthe, C.~Edwards: Adaptive bitrate selection: A survey. In:
   \emph{IEEE Communications Surveys \& Tutorials}, 19, 4 (2017), 2985--3014.
@@ -64,6 +74,11 @@ Y.~Sani, A.~Mauthe, C.~Edwards: Adaptive bitrate selection: A survey. In:
 \bibitem[Soda11]{Soda11}
 I.~Sodagar: The mpeg-dash standard for multimedia streaming over the internet.
   In: \emph{IEEE multimedia}, 18, 4 (2011), 62--67.
+
+\bibitem[THKP12]{THKP12}
+T.~C. Thang, Q.-D. Ho, J.~W. Kang, A.~T. Pham: Adaptive streaming of
+  audiovisual content using MPEG DASH. In: \emph{IEEE Transactions on Consumer
+  Electronics}, 58, 1 (2012), 78--85.
 
 \bibitem[TiMR16]{TiMR16}
 C.~Timmerer, M.~Maiero, B.~Rainer: Which adaptation logic? An objective and
