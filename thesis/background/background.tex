@@ -239,12 +239,30 @@ The next segment's bandwidth is calculated by looking at the calculation of last
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Miller et al.}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-Describe Miller et al. \cite{MQGW12b}
+The algorithm presented by Miller et al. \cite{MQGW12b} belongs in the category of buffer based adaption logics and works in two phases. During the startup phase it tries to increase quality rather aggressively, in order to reach an appropriate representation faster. It then transits into the stable phase, where the focus lies on maintaining a healthy level of buffered multimedia material. In order to accomplish this, the adaption logic defines a set of thresholds $0 < b_{min} < b_{low} < b_{max}$ where $b$ denotes the current fill level of the buffer. The algorithm aims to keep said fill level around an optimum defined as $b_{opt}= 0.5(b_{low}+b_{max})$. It does so by taking the current buffer level and the last segment's throughput as input, recommending a switch to a lower quality if the buffer get's too low or to a higher representation if the buffer is substantially fuller than needed. The overlying guidelines for these decisions are to maximize the played bitrate while minimizing the number of quality switches for the user.
+
+
+%buffer level and last throughput as input
+%recommended bitrate and minimum buffer level for download as output
+%maximize bit rate, minimize quality switches
+%two phases: startup - agrressive increase of quality
+%stable phase - maintain healthy buffer level
+%defines thresholds: $(0 < b_{min} < b_{low} < b_{max})$ 
+%optimal buffer level: $b_{opt}= 0.5(b_{low}+b_{max})$.
+%
+%Describe Miller et al. \cite{MQGW12b}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Thang et al.}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-Describe Thang et al. \cite{THKP12}
+Thang et al. \cite{THKP12} published the idea for an adaption logic which looks further into the past than just the last segment. Each time a segment is received, the throughput is calculated and saved into a list. The algorithm then calculates the average of all the values in said list, creating a rough estimation of the throughput in recent past. After enough values have filled the list for it to reach its maximum capacity, every new throughput measurement causes the oldest entry in the list to drop out. This ensures that the calculated average stays fresh and relevant. By basing the selection of an appropriate quality level on this average throughput, it allows the algorithm to achieve a smoother playback during short term bandwidth fluctuations, since singular deviations do not have that much of an impact on an average calculated over a set of multiple numbers. Furthermore, the maximum list capacity ensures that drastic changes in bandwidth still have a noticeable impact, even as time goes on, allowing the adaption logic to quickly react and adapt if needed. 
+
+%sliding average of measured video throughput
+%dynamically adapts to changing bandwidth conditions
+%smooth playback during short term bandwidth fluctuations
+%quick reaction if strong bandwidth change
+
+%Describe Thang et al. \cite{THKP12}
 
 %what are those? \\
 %which are interesting here? \\
