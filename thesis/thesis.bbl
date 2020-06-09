@@ -24,6 +24,10 @@ P.~Gusev, J.~Burke: NDN-RTC: Real-Time Videoconferencing over Named Data
   Information-Centric Networking}, ACM-ICN '15, ACM, New York, NY, USA (2015),
   117--126, \urlprefix\url{http://doi.acm.org/10.1145/2810156.2810176}.
 
+\bibitem[HuGh08]{HuGh08}
+Q.~Huynh-Thu, M.~Ghanbari: Scope of validity of PSNR in image/video quality
+  assessment. In: \emph{Electronics letters}, 44, 13 (2008), 800--801.
+
 \bibitem[KuAB17]{KuAB17}
 J.~Kua, G.~Armitage, P.~Branch: A survey of rate adaptation techniques for
   dynamic adaptive streaming over HTTP. In: \emph{IEEE Communications Surveys
