@@ -279,20 +279,52 @@ Thang et al. \cite{THKP12} published the idea for an adaption logic that looks f
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \section{Quality of Experience}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-what is important for conversational services? \\
-end-to-end latency, packet loss...
+Quality of experience \textbf{(QoE)} describes a measure of the end-to-end performance of a service aiming to be consumed by a human user. There are a lot of different factors that contribute to QoE, but they can be divided into three main groups: \cite{RBDML+14}
 
-Low transmission delay
-Low packet loss
-Low jitter (what is that again?)
+\begin{itemize}
+	
+	\item \textbf{Human Influence Factors} focus mainly on the consumption of content by humans and can vary from person to person. They are subjective in nature and include low-level factors like visual and auditory capabilities, gender, age or mood, and higher-level factors like cultural or economic background, personal needs and goals, and other personality traits. 
+	
+	%    Low-level processing (visual and auditory acuity, gender, age, mood, …)
+	%    Higher-level processing (cognitive processes, socio-cultural and economic background, expectations, needs and goals, other personality traits…)
+	
+	\item \textbf{System Influence Factors} focus on the creation, packaging, transmission, and display of content. They are mostly objective in nature and thus easier to measure and compare. Packaging content includes media-related properties like encoding, resolution, and bit rate. For the transmission, there are network-related factors like bandwidth, delay, jitter, and packet loss. Finally, the display of content is depended on factors like screen resolution and display size.
+	
+	%    Content-related
+	%    Media-related (encoding, resolution, sample rate, …)
+	%    Network-related (bandwidth, delay, jitter, …)
+	%    Device-related (screen resolution, display size, …)
+	
+	\item \textbf{Context Influence Factors} deal with the consumer's surroundings during consumption. They are a mix of subjective and objective factors and include physical (location and space), temporal (time of day, frequency of use), and social (interpersonal relationship) factors. For controlled environments, they also factor in the nature of a given task, if multitasking is required or if there are interruptions.
+	
+	%    Physical context (location and space)
+	%    Temporal context (time of day, frequency of use, …)
+	%    Social context (inter-personal relations during experience)
+	%    Economic context
+	%    Task context (multitasking, interruptions, task type)
+	%    Technical and information context (relationship between systems)? 
+	
+	
+\end{itemize}
+
+To stay within the scope of this thesis, we narrowed our focus on system influence factors. While these include many factors like encoding, resolution, or delay that can simply be measured and are thus trivial to obtain, there is also often a need to get a sense of overall image/video quality after transmission. To obtain such a comparison between an original frame and a transmitted one, we can use specific metrics that use mathematical equations to calculate certain differences in quality. The following sections will discuss three of them. 
+
+
+
+
+%what is important for conversational services? \\
+%end-to-end latency, packet loss...
+%
+%Low transmission delay
+%Low packet loss
+%Low jitter (what is that again?)
+
+%can be objective or subjective --> only objective metrics here
+%work by comparing resulting image (after compression, transformation, transmission, etc) with original image
+
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
-\subsection{Metrics} %TODO Maybe delete thos headline and elevate the metrics to subsections instead
-%-----------------------------------------------------------------------------------------------------------------------------------------
-can be objective or subjective --> only objective metrics here
-work by comparing resulting image (after compression, transformation, transmission, etc) with original image
-%-----------------------------------------------------------------------------------------------------------------------------------------
-\subsubsection{Peak Signal to Noise Ratio (PSNR)}
+\subsection{Peak Signal to Noise Ratio (PSNR)}
 %-----------------------------------------------------------------------------------------------------------------------------------------
 pro: easy to use/calculate
 con: only suitable if video content and codec do not change \cite{HuGh08}
@@ -308,7 +340,7 @@ MSR(f,g) = \dfrac{1}{MN}\sum_{i=1}^{M}\sum_{j=1}^{N}(f_{ij}-g_{ij})^{2}
 \end{equation}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
-\subsubsection{Structural Similarity (SSIM)}
+\subsection{Structural Similarity (SSIM)}
 %-----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -325,7 +357,7 @@ s(f,g) = \dfrac{\sigma_{fg}+C_{3}}{\sigma_{f}\sigma_{g}+C_{3}}
 \end{equation}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
-\subsubsection{Video Multimethod Assessment Fusion (VMAF)}
+\subsection{Video Multimethod Assessment Fusion (VMAF)}
 %-----------------------------------------------------------------------------------------------------------------------------------------
 pro: range of tests --> more complete picture
 con: more difficult/time-y to use/calculate

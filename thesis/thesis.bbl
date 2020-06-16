@@ -1,5 +1,5 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{MQGW12b}
+\begin{thebibliography}{RBDML{\etalchar{+}}14}
 
 \bibitem[ADIK{\etalchar{+}}12]{ADIK12}
 B.~Ahlgren, C.~Dannewitz, C.~Imbrenda, D.~Kutscher, B.~Ohlman: A survey of
@@ -65,6 +65,11 @@ J.~Postel, : Transmission control protocol. In:  (1981).
 B.~Rainer, D.~Posch, H.~Hellwagner: Investigating the performance of pull-based
   dynamic adaptive streaming in NDN. In: \emph{IEEE Journal on Selected Areas
   in Communications}, 34, 8 (2016), 2130--2140.
+
+\bibitem[RBDML{\etalchar{+}}14]{RBDML+14}
+U.~Reiter, K.~Brunnstr{\"o}m, K.~De~Moor, M.-C. Larabi, M.~Pereira,
+  A.~Pinheiro, J.~You, A.~Zgank: Factors influencing quality of experience.
+  \emph{In: Quality of experience}, Springer (2014), 55--72.
 
 \bibitem[RLMT12]{RLMT12}
 B.~Rainer, S.~Lederer, C.~M{\"u}ller, C.~Timmerer: A seamless Web integration
