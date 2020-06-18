@@ -12,7 +12,7 @@
 \BOOKMARK [2][]{subsection.2.2.2}{2.2.2 Dynamic Adaptive Streaming over HTTP \(DASH\)}{section.2.2}% 12
 \BOOKMARK [2][]{subsection.2.2.3}{2.2.3 Adaption logics}{section.2.2}% 13
 \BOOKMARK [1][]{section.2.3}{2.3 Quality of Experience}{chapter.2}% 14
-\BOOKMARK [2][]{subsection.2.3.1}{2.3.1 Peak Signal to Noise Ratio \(PSNR\)}{section.2.3}% 15
+\BOOKMARK [2][]{subsection.2.3.1}{2.3.1 Peak Signal to Noise Ratio}{section.2.3}% 15
 \BOOKMARK [2][]{subsection.2.3.2}{2.3.2 Structural Similarity \(SSIM\)}{section.2.3}% 16
 \BOOKMARK [2][]{subsection.2.3.3}{2.3.3 Video Multimethod Assessment Fusion \(VMAF\)}{section.2.3}% 17
 \BOOKMARK [0][]{chapter.3}{3 Adaptive Rate Control in NDN-based Video Conferences}{}% 18

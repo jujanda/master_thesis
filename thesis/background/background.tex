@@ -274,12 +274,11 @@ Thang et al. \cite{THKP12} published the idea for an adaption logic that looks f
 %	what to quality to switch to?
 %	how fast to switch to that quality?
 %	how often is switching allowed?
-	
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \section{Quality of Experience}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-Quality of experience \textbf{(QoE)} describes a measure of the end-to-end performance of a service aiming to be consumed by a human user. There are a lot of different factors that contribute to QoE, but they can be divided into three main groups: \cite{RBDML+14}
+\textbf{Quality of experience (QoE)} describes a measure of the end-to-end performance of a service aiming to be consumed by a human user. There are a lot of different factors that contribute to QoE, but they can be divided into three main groups: \cite{RBDML+14}
 
 \begin{itemize}
 	
@@ -310,8 +309,6 @@ Quality of experience \textbf{(QoE)} describes a measure of the end-to-end perfo
 To stay within the scope of this thesis, we narrowed our focus on system influence factors. While these include many factors like encoding, resolution, or delay that can simply be measured and are thus trivial to obtain, there is also often a need to get a sense of overall image/video quality after transmission. To obtain such a comparison between an original frame and a transmitted one, we can use specific metrics that use mathematical equations to calculate certain differences in quality. The following sections will discuss three of them. 
 
 
-
-
 %what is important for conversational services? \\
 %end-to-end latency, packet loss...
 %
@@ -324,36 +321,46 @@ To stay within the scope of this thesis, we narrowed our focus on system influen
 
 
 %-----------------------------------------------------------------------------------------------------------------------------------------
-\subsection{Peak Signal to Noise Ratio (PSNR)}
+\subsection{Peak Signal to Noise Ratio}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-pro: easy to use/calculate
-con: only suitable if video content and codec do not change \cite{HuGh08}
+\textbf{Peak signal to noise ratio (PSNR)} is a term from signal theory and generally describes the ratio between a signal's power compared to the power of noise that disturbs said signal. It uses the \textbf{mean square error} \textbf{(MSE)} to compare and assess the quality of the hampered signal. This can also be used to compare two images where one was transformed or compressed in some kind of way and thus might have lost some information opposed to the original. Given a reference image $ f $ and a test image $ g $, both of the size of $ M \times N $,  the formula for PSNR can be defined as in \cite{HoZi10}:
 
 \begin{equation}
 PSNR (f,g) = 10 \cdot log_{10}\left(\dfrac{255^{2}}{MSR(f,g)}\right)
-\label{equation:metrics:PSNR_1}
+\label{equation:quality_of_experience:PSNR_1}
 \end{equation}
+
+where
 
 \begin{equation}
 MSR(f,g) = \dfrac{1}{MN}\sum_{i=1}^{M}\sum_{j=1}^{N}(f_{ij}-g_{ij})^{2}
-\label{equation:metrics:PSNR_2}
+\label{equation:quality_of_experience:PSNR_2}
 \end{equation}
 
+From the formulas, we can deduct that fewer errors (low MSE) result in higher PSNR values, thus generally representing better image quality, while the opposite also holds true. For identical images, the value approaches infinity or becomes undefined due to division by 0. The unit is logarithmic and most commonly presented in dB. This procedure can also be used to compare two videos by calculating the values for each pair of frames. However, PSNR operates on lost information with no regard to human perception and has been shown to perform poorly compared to many other metrics \cite{HuGh08} \cite{HuGh12}. Furthermore, research has revealed that PSNR results can only be reliably compared for images and videos where the content and the codec of the images is the same \cite{HuGh08}, thus limiting its use. Nevertheless, it can be a simple and fast way to get a first impression of lost quality.
+
+
+%pro: easy to use/calculate\\
+%con: only suitable if video content and codec do not change \cite{HuGh08} \\
+
+%f ... reference image \\
+%g ... test image \\
+%MxN ... image sizes (both) \\
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Structural Similarity (SSIM)}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-
+developed by \cite{WBSS04}
 
 \begin{equation}
 SSIM(f,g) = l(f,g) \cdot c(f,g) \cdot s(f,g)
-\label{equation:metrics:SSIM_1}
+\label{equation:quality_of_experience:SSIM_1}
 \end{equation}
 
 \begin{equation}
 l(f,g) = \dfrac{2\mu_{f}\mu_{g}+C_{1}}{\mu_{f}^{2} + \mu_{g}^{2}+C_{1}}, 
 c(f,g) = \dfrac{2\sigma_{f}\sigma_{g}+C_{2}}{\sigma_{f}^{2} + \sigma_{g}^{2}+C_{2}}, 
 s(f,g) = \dfrac{\sigma_{fg}+C_{3}}{\sigma_{f}\sigma_{g}+C_{3}}
-\label{equation:metrics:SSIM_2}
+\label{equation:quality_of_experience:SSIM_2}
 \end{equation}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------

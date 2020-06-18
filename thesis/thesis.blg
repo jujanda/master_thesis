@@ -10,54 +10,54 @@ A level-1 auxiliary file: conclusion/conclusion.aux
 A level-1 auxiliary file: abk.aux
 The style file: syssec.bst
 Database file #1: thesis.bib
-Warning--entry type for "TODO02" isn't style-file defined
---line 136 of file thesis.bib
+Warning--entry type for "TODO01" isn't style-file defined
+--line 110 of file thesis.bib
 Warning--entry type for "DaI14" isn't style-file defined
---line 223 of file thesis.bib
+--line 197 of file thesis.bib
+Warning--I didn't find a database entry for "TODO02"
 Warning--to sort, need author or key in DaI14
-Warning--to sort, need author or key in TODO01
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--empty booktitle in TMRP15
 Warning--empty pages in TMRP15
-You've used 25 entries,
+You've used 27 entries,
             3068 wiz_defined-function locations,
-            767 strings with 9265 characters,
-and the built_in function-call counts, 14707 in all, are:
-= -- 1207
-> -- 660
+            786 strings with 9686 characters,
+and the built_in function-call counts, 16271 in all, are:
+= -- 1347
+> -- 720
 < -- 2
-+ -- 271
-- -- 265
-* -- 1149
-:= -- 2059
-add.period$ -- 45
-call.type$ -- 25
-change.case$ -- 208
-chr.to.int$ -- 24
++ -- 296
+- -- 289
+* -- 1273
+:= -- 2281
+add.period$ -- 50
+call.type$ -- 27
+change.case$ -- 228
+chr.to.int$ -- 26
 cite$ -- 31
-duplicate$ -- 1095
-empty$ -- 1132
-format.name$ -- 294
-if$ -- 2965
+duplicate$ -- 1213
+empty$ -- 1251
+format.name$ -- 322
+if$ -- 3282
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 245
-newline$ -- 79
-num.names$ -- 69
-pop$ -- 456
+missing$ -- 270
+newline$ -- 85
+num.names$ -- 78
+pop$ -- 485
 preamble$ -- 1
-purify$ -- 218
+purify$ -- 236
 quote$ -- 0
-skip$ -- 380
+skip$ -- 416
 stack$ -- 0
-substring$ -- 643
-swap$ -- 618
+substring$ -- 745
+swap$ -- 695
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 200
-warning$ -- 4
-while$ -- 106
-width$ -- 30
-write$ -- 222
+type$ -- 216
+warning$ -- 3
+while$ -- 122
+width$ -- 32
+write$ -- 245
 (There were 6 warnings)

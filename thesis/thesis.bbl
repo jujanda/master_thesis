@@ -6,10 +6,6 @@ B.~Ahlgren, C.~Dannewitz, C.~Imbrenda, D.~Kutscher, B.~Ohlman: A survey of
   information-centric networking. In: \emph{IEEE Communications Magazine}, 50,
   7 (2012), 26--36.
 
-\bibitem[auth]{TODO02}
-author: Integration and Performance Evaluation of MPEG-DASH and DRM Systems in
-  an HTML5 Environment.
-
 \bibitem[BePT15]{BePT15}
 M.~Belshe, R.~Peon, M.~Thomson: Hypertext transfer protocol version 2 (http/2)
   (2015).
@@ -24,9 +20,18 @@ P.~Gusev, J.~Burke: NDN-RTC: Real-Time Videoconferencing over Named Data
   Information-Centric Networking}, ACM-ICN '15, ACM, New York, NY, USA (2015),
   117--126, \urlprefix\url{http://doi.acm.org/10.1145/2810156.2810176}.
 
+\bibitem[HoZi10]{HoZi10}
+A.~Hore, D.~Ziou: Image quality metrics: PSNR vs. SSIM. \emph{In: 2010 20th
+  International Conference on Pattern Recognition}, IEEE (2010), 2366--2369.
+
 \bibitem[HuGh08]{HuGh08}
 Q.~Huynh-Thu, M.~Ghanbari: Scope of validity of PSNR in image/video quality
   assessment. In: \emph{Electronics letters}, 44, 13 (2008), 800--801.
+
+\bibitem[HuGh12]{HuGh12}
+Q.~Huynh-Thu, M.~Ghanbari: The accuracy of PSNR in predicting video quality for
+  different video scenes and frame rates. In: \emph{Telecommunication Systems},
+  49, 1 (2012), 35--48.
 
 \bibitem[KuAB17]{KuAB17}
 J.~Kua, G.~Armitage, P.~Branch: A survey of rate adaptation techniques for
@@ -99,8 +104,14 @@ C.~Timmerer, M.~Maiero, B.~Rainer, S.~Petscharnig, D.~Weinberger, C.~Mueller,
   S.~Lederer: Quality of Experience of Adaptive HTTP Streaming in Real-World
   Environments (2015).
 
-\bibitem[TOD]{TODO01}
-Guidelines for Implementation: DASH-AVC/264 Test cases and Vectors.
+\bibitem[TODO]{TODO01}
+TODO: Integration and Performance Evaluation of MPEG-DASH and DRM Systems in an
+  HTML5 Environment.
+
+\bibitem[WBSS04]{WBSS04}
+Z.~Wang, A.~C. Bovik, H.~R. Sheikh, E.~P. Simoncelli: Image quality assessment:
+  from error visibility to structural similarity. In: \emph{IEEE transactions
+  on image processing}, 13, 4 (2004), 600--612.
 
 \bibitem[XVSF{\etalchar{+}}13]{XVSF+13}
 G.~Xylomenos, C.~N. Ververidis, V.~A. Siris, N.~Fotiou, C.~Tsilopoulos,
