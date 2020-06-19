@@ -10,6 +10,11 @@ B.~Ahlgren, C.~Dannewitz, C.~Imbrenda, D.~Kutscher, B.~Ohlman: A survey of
 M.~Belshe, R.~Peon, M.~Thomson: Hypertext transfer protocol version 2 (http/2)
   (2015).
 
+\bibitem[BrZP08]{BrZP08}
+A.~C. Brooks, X.~Zhao, T.~N. Pappas: Structural similarity quality metrics in a
+  coding context: Exploring the space of realistic distortions. In: \emph{IEEE
+  Transactions on image processing}, 17, 8 (2008), 1261--1273.
+
 \bibitem[DaI14]{DaI14}
 DASH Industry Forum: Guidelines for Implementation: DASH-AVC/264 Test cases and
   Vectors, v1.0 (March 2014), \urlprefix\url{http://www.dashif.org.}

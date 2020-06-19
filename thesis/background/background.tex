@@ -274,7 +274,6 @@ Thang et al. \cite{THKP12} published the idea for an adaption logic that looks f
 %	what to quality to switch to?
 %	how fast to switch to that quality?
 %	how often is switching allowed?
-
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \section{Quality of Experience}
 %-----------------------------------------------------------------------------------------------------------------------------------------
@@ -326,18 +325,18 @@ To stay within the scope of this thesis, we narrowed our focus on system influen
 \textbf{Peak signal to noise ratio (PSNR)} is a term from signal theory and generally describes the ratio between a signal's power compared to the power of noise that disturbs said signal. It uses the \textbf{mean square error} \textbf{(MSE)} to compare and assess the quality of the hampered signal. This can also be used to compare two images where one was transformed or compressed in some kind of way and thus might have lost some information opposed to the original. Given a reference image $ f $ and a test image $ g $, both of the size of $ M \times N $,  the formula for PSNR can be defined as in \cite{HoZi10}:
 
 \begin{equation}
-PSNR (f,g) = 10 \cdot log_{10}\left(\dfrac{255^{2}}{MSR(f,g)}\right)
+PSNR (f,g) = 10 \cdot log_{10}\left(\dfrac{255^{2}}{MSE(f,g)}\right)
 \label{equation:quality_of_experience:PSNR_1}
 \end{equation}
 
 where
 
 \begin{equation}
-MSR(f,g) = \dfrac{1}{MN}\sum_{i=1}^{M}\sum_{j=1}^{N}(f_{ij}-g_{ij})^{2}
+MSE(f,g) = \dfrac{1}{MN}\sum_{i=1}^{M}\sum_{j=1}^{N}(f_{ij}-g_{ij})^{2}
 \label{equation:quality_of_experience:PSNR_2}
 \end{equation}
 
-From the formulas, we can deduct that fewer errors (low MSE) result in higher PSNR values, thus generally representing better image quality, while the opposite also holds true. For identical images, the value approaches infinity or becomes undefined due to division by 0. The unit is logarithmic and most commonly presented in dB. This procedure can also be used to compare two videos by calculating the values for each pair of frames. However, PSNR operates on lost information with no regard to human perception and has been shown to perform poorly compared to many other metrics \cite{HuGh08} \cite{HuGh12}. Furthermore, research has revealed that PSNR results can only be reliably compared for images and videos where the content and the codec of the images is the same \cite{HuGh08}, thus limiting its use. Nevertheless, it can be a simple and fast way to get a first impression of lost quality.
+From the formula \ref{equation:quality_of_experience:PSNR_1} we can deduct that fewer errors (low MSE) result in higher PSNR values, thus generally representing better image quality, while the opposite also holds true. For identical images, the value approaches infinity or becomes undefined due to division by 0. The unit is logarithmic and most commonly presented in dB. This procedure can also be used to compare two videos by calculating the values for each pair of frames. However, PSNR operates on lost information on an absolute level with no regard to human perception and has been shown to perform poorly compared to many other metrics \cite{HuGh08} \cite{HuGh12}. Furthermore, research has revealed that PSNR results can only be reliably compared for images and videos where the content and the codec of the images is the same \cite{HuGh08}, thus limiting its use. Nevertheless, it can be a simple and fast way to get a first impression of lost quality.
 
 
 %pro: easy to use/calculate\\
@@ -346,28 +345,40 @@ From the formulas, we can deduct that fewer errors (low MSE) result in higher PS
 %f ... reference image \\
 %g ... test image \\
 %MxN ... image sizes (both) \\
+
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Structural Similarity (SSIM)}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-developed by \cite{WBSS04}
+Originally developed by Wang et al.\cite{WBSS04} the \textbf{structural similarity (SSIM)} index was specifically designed with the human visual system in mind. Since humans are highly adapted on extracting structural information of a scene (in contrast to color for example) SSIM focuses on said structural similarities and differences to determine how closely related to images are. It is calculated by using the following formula from \cite{HoZi10}:
 
 \begin{equation}
 SSIM(f,g) = l(f,g) \cdot c(f,g) \cdot s(f,g)
 \label{equation:quality_of_experience:SSIM_1}
 \end{equation}
 
+where
+
 \begin{equation}
-l(f,g) = \dfrac{2\mu_{f}\mu_{g}+C_{1}}{\mu_{f}^{2} + \mu_{g}^{2}+C_{1}}, 
-c(f,g) = \dfrac{2\sigma_{f}\sigma_{g}+C_{2}}{\sigma_{f}^{2} + \sigma_{g}^{2}+C_{2}}, 
+l(f,g) = \dfrac{2\mu_{f}\mu_{g}+C_{1}}{\mu_{f}^{2} + \mu_{g}^{2}+C_{1}}, \quad
+c(f,g) = \dfrac{2\sigma_{f}\sigma_{g}+C_{2}}{\sigma_{f}^{2} + \sigma_{g}^{2}+C_{2}}, \quad
 s(f,g) = \dfrac{\sigma_{fg}+C_{3}}{\sigma_{f}\sigma_{g}+C_{3}}
 \label{equation:quality_of_experience:SSIM_2}
 \end{equation}
 
+As seen in \ref{equation:quality_of_experience:SSIM_2} the formula can be split in three parts. The first term $ l(f,g) $ calculates the closeness of the images' mean luminances ($ \mu_{f} $ and $ \mu_{g} $), with the maximum result of 1 only being obtainable if both are identical $ (\mu_{f} = \mu_{g}) $. The second term $ c(f,g) $ measures contrast closeness, by comparing the images' standard deviations ($ \sigma_{f} $ and $ \sigma_{g} $). As  with the first term, the maximum result of 1 is only obtained if both images' standard deviations are identical $ (\sigma_{f} = \sigma_{g}) $. The final term $ s(f,g) $ compares the images' structure by measuring the correlation coefficient between the two images $ f $ and $ g $, where $ \sigma_{fg} $ denotes their covariance. In order to avoid division by 0 in all cases, each term also adds a positive constant ($ C_{1}, C_{2}, C_{3} $) to their equations. The overall positive result values of the SSIM index are thus in $ [0,1] $, with 0 meaning no similarities and 1 for identical images. While unlikely, it should also be noted that in cases where the local image structure is reversed, negative values of up to $ -1 $ are reachable \cite{BrZP08}.
+
+%developed by \cite{WBSS04} \\
+%keeps human visual system (HVS) in mind \\
+%luminence maximal 1 (if both images' luminances are identical)\\
+%contrast maximal 1 (if both images' standard deviation is the same\\
+%structure uses correlation coefficient ($ f_{fg} $ is covariance between both $ f $ and $ g $\\
+%the SSIM values can technically be within [-1, 1], with 1 for identical images and 0 for no corellation at all. negative values can only be reached if the local image structure is reversed \cite{BrZP08}
+
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Video Multimethod Assessment Fusion (VMAF)}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-pro: range of tests --> more complete picture
-con: more difficult/time-y to use/calculate
+pro: range of tests --> more complete picture\\
+con: more difficult/time consuming to use/calculate
 
 %=========================================================================================================================================
 %=========================================================================================================================================
