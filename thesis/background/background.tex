@@ -345,7 +345,6 @@ From the formula \ref{equation:quality_of_experience:PSNR_1} we can deduct that 
 %f ... reference image \\
 %g ... test image \\
 %MxN ... image sizes (both) \\
-
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Structural Similarity (SSIM)}
 %-----------------------------------------------------------------------------------------------------------------------------------------
@@ -377,8 +376,23 @@ As seen in \ref{equation:quality_of_experience:SSIM_2} the formula can be split 
 %-----------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Video Multimethod Assessment Fusion (VMAF)}
 %-----------------------------------------------------------------------------------------------------------------------------------------
-pro: range of tests --> more complete picture\\
-con: more difficult/time consuming to use/calculate
+This is a newer metric for determining visual quality specifically tailored to videos. The developers \cite{LAKM+16} tried to replicate the performance of subjective metrics like \textbf{Differential Mean Opinion Score (DMOS)} while still not requiring human input. Additionally, they found that while most metrics do generally well, they often fail to recognize a specific type of quality loss when applied on their own. Thus, building on the works of \cite{LLLK13} and \cite{LLKW14} they created a method called \textbf{Video Multimethod Assessment Fusion (VMAF)}. It uses adapted versions of \textbf{Visual Information Fidelity (VIF)} \cite{ShBo06}, which operates on the premise that quality is complementary to the measure of information fidelity loss, and the \textbf{Detail Loss Metric (DLM)} \cite{LZMN11}, which is based on the rationale of separately measuring the loss of details which affects the content visibility, and the redundant impairment which distracts viewer attention \cite{LAKM+16}. Since both of these are focused on image quality, they additionally introduced a simple measure of the temporal difference between adjacent frames, by calculating the average absolute pixel difference for the luminance components \cite{LAKM+16}. The results of these three metrics are then fused via machine learning, using \textbf{support vector machine (SVM)} regression \cite{CoVa95}, producing a final score that can range from 0 to 100, with higher scores being better. 
+
+While it can be shown that this whole procedure paints a more complete picture of image/video quality \cite{LAKM+16}, it should also be noted that VMAF does take significantly longer to compute than regular metrics.
+
+%developed by \cite{LAKM+16} \\
+%aims to replicate performance of \textbf{Differential Mean Opinion Score (DMOS)} from subjective testing \\
+%Single metrics on their own not sufficient: each fall flat in different scenarios \\
+%Uses three metrics: \\
+%Visual Information Fidelity (VIF) \cite{ShBo06} \\
+%Detail Loss Metric (DLM) \cite{LZMN11} \\
+%Motion: \\
+%Combines all three via machine learning using support vector machine (SVM) regression \cite{CoVa95} \\
+%results in score ranging from 0 to 100, with higher being better.
+%
+%pro: range of tests --> more complete picture \\
+%con: more difficult/time consuming to use/calculate \\
+
 
 %=========================================================================================================================================
 %=========================================================================================================================================

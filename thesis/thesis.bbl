@@ -15,6 +15,10 @@ A.~C. Brooks, X.~Zhao, T.~N. Pappas: Structural similarity quality metrics in a
   coding context: Exploring the space of realistic distortions. In: \emph{IEEE
   Transactions on image processing}, 17, 8 (2008), 1261--1273.
 
+\bibitem[CoVa95]{CoVa95}
+C.~Cortes, V.~Vapnik: Support-vector networks. In: \emph{Machine learning}, 20,
+  3 (1995), 273--297.
+
 \bibitem[DaI14]{DaI14}
 DASH Industry Forum: Guidelines for Implementation: DASH-AVC/264 Test cases and
   Vectors, v1.0 (March 2014), \urlprefix\url{http://www.dashif.org.}
@@ -42,6 +46,27 @@ Q.~Huynh-Thu, M.~Ghanbari: The accuracy of PSNR in predicting video quality for
 J.~Kua, G.~Armitage, P.~Branch: A survey of rate adaptation techniques for
   dynamic adaptive streaming over HTTP. In: \emph{IEEE Communications Surveys
   \& Tutorials}, 19, 3 (2017), 1842--1866.
+
+\bibitem[LAKM{\etalchar{+}}16]{LAKM+16}
+Z.~Li, A.~Aaron, I.~Katsavounidis, A.~Moorthy, M.~Manohara: Toward a practical
+  perceptual video quality metric. In: \emph{The Netflix Tech Blog}, 6 (2016),
+  2.
+
+\bibitem[LLLK13]{LLLK13}
+T.-J. Liu, Y.-C. Lin, W.~Lin, C.-C.~J. Kuo: Visual quality assessment: recent
+  developments, coding applications and future trends. In: \emph{APSIPA
+  Transactions on Signal and Information Processing}, 2 (2013).
+
+\bibitem[LLWK14]{LLKW14}
+J.~Y. Lin, T.-J. Liu, E.~C.-H. Wu, C.-C.~J. Kuo: A fusion-based video quality
+  assessment (FVQA) index. \emph{In: Signal and Information Processing
+  Association Annual Summit and Conference (APSIPA), 2014 Asia-Pacific}, IEEE
+  (2014), 1--5.
+
+\bibitem[LZMN11]{LZMN11}
+S.~Li, F.~Zhang, L.~Ma, K.~N. Ngan: Image quality assessment by separately
+  evaluating detail losses and additive impairments. In: \emph{IEEE
+  Transactions on Multimedia}, 13, 5 (2011), 935--949.
 
 \bibitem[MGAZ18]{MGAZ18}
 S.~Mastorakis, P.~Gusev, A.~Afanasyev, L.~Zhang: Real-Time Data Retrieval in
@@ -89,6 +114,10 @@ B.~Rainer, S.~Lederer, C.~M{\"u}ller, C.~Timmerer: A seamless Web integration
 \bibitem[SaME17]{SaME17}
 Y.~Sani, A.~Mauthe, C.~Edwards: Adaptive bitrate selection: A survey. In:
   \emph{IEEE Communications Surveys \& Tutorials}, 19, 4 (2017), 2985--3014.
+
+\bibitem[ShBo06]{ShBo06}
+H.~R. Sheikh, A.~C. Bovik: Image information and visual quality. In: \emph{IEEE
+  Transactions on image processing}, 15, 2 (2006), 430--444.
 
 \bibitem[Soda11]{Soda11}
 I.~Sodagar: The mpeg-dash standard for multimedia streaming over the internet.

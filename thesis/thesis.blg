@@ -19,45 +19,45 @@ Warning--to sort, need author or key in DaI14
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--empty booktitle in TMRP15
 Warning--empty pages in TMRP15
-You've used 28 entries,
+You've used 34 entries,
             3068 wiz_defined-function locations,
-            793 strings with 9909 characters,
-and the built_in function-call counts, 16861 in all, are:
-= -- 1398
-> -- 742
+            833 strings with 10965 characters,
+and the built_in function-call counts, 20284 in all, are:
+= -- 1679
+> -- 895
 < -- 2
-+ -- 305
-- -- 298
-* -- 1323
-:= -- 2363
-add.period$ -- 52
-call.type$ -- 28
-change.case$ -- 236
-chr.to.int$ -- 27
-cite$ -- 32
-duplicate$ -- 1256
-empty$ -- 1298
-format.name$ -- 332
-if$ -- 3398
++ -- 368
+- -- 360
+* -- 1601
+:= -- 2850
+add.period$ -- 64
+call.type$ -- 34
+change.case$ -- 287
+chr.to.int$ -- 33
+cite$ -- 38
+duplicate$ -- 1518
+empty$ -- 1558
+format.name$ -- 403
+if$ -- 4072
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 280
-newline$ -- 88
-num.names$ -- 81
-pop$ -- 499
+missing$ -- 341
+newline$ -- 106
+num.names$ -- 99
+pop$ -- 595
 preamble$ -- 1
-purify$ -- 244
+purify$ -- 295
 quote$ -- 0
-skip$ -- 427
+skip$ -- 503
 stack$ -- 0
-substring$ -- 784
-swap$ -- 722
+substring$ -- 925
+swap$ -- 875
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 224
+type$ -- 272
 warning$ -- 3
-while$ -- 127
-width$ -- 33
-write$ -- 254
+while$ -- 155
+width$ -- 39
+write$ -- 309
 (There were 6 warnings)
